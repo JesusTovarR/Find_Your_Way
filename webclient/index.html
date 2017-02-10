@@ -28,6 +28,7 @@
             <button class=" btn btn-primary" ng-click="cambio()">Regles du jeu</button>
             <button class=" btn btn-primary" ng-click="newGame()">Demarrer</button>
             <button ng-controller="MapController" class=" btn btn-primary" ng-click="initMap()">Redemarrer</button>
+            <div class=" btn btn-primary">Score : {{score}}</div>
         </div>
     </nav>
     <div class="lieux">
@@ -68,10 +69,7 @@
 </div>
 </div>
 
-<div ng-controller="MapController" class="map">
-    <div  id="map"></div>
-    <span>Score : {{score}}</span>
-</div>
+    <div ng-controller="MapController"  id="map"></div>
 
 
 
