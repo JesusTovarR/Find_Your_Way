@@ -1,9 +1,13 @@
 
 angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$http', 'Lieu', 'LieuFactory',
     function($scope, $rootScope, $http, Lieu, LieuFactory){
-
-        $scope.in1=true;
-        $scope.desFin=false;
+        $scope.indic={
+            "indication1": true,
+            "indication2": false,
+            "indication3": false,
+            "indication4": false,
+            "indication5": false,
+            "desFinal": false};
 
         $scope.newGame = function () {
 
@@ -89,5 +93,15 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$ht
                 console.log('error');
             });
         };
+
+        $scope.$watch($scope.indic,function(newValue,oldValue) {
+
+            if (newValue===oldValue) {
+                return;
+            }
+
+            alert("El nuevo valor es " + newValue);
+        });
+
     }
 ]);
