@@ -25,8 +25,8 @@ class PrivateController extends AbstractController
          isset($request->getParsedBody()['coord_y']) &&
          isset($request->getParsedBody()['indication']) &&
          isset($request->getParsedBody()['description'])){
-           $lieu->coord_x = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_NUMBER_FLOAT);
-           $lieu->coord_y = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_NUMBER_FLOAT);
+           $lieu->lat = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_NUMBER_FLOAT);
+           $lieu->long = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_NUMBER_FLOAT);
            $lieu->indication = filter_var($request->getParsedBody()['indication'], FILTER_SANITIZE_STRING);
            $lieu->description = filter_var($request->getParsedBody()['description'], FILTER_SANITIZE_STRING);
            $lieu->dest_finale = 0;
@@ -72,8 +72,8 @@ try{
         $lieu = Lieu::select()->where('id','=',$args['id'])->firstOrFail();
         //  var_dump($request->getParsedBody());die;
         $lieu->nom_lieu = filter_var($request->getParsedBody()['nom_lieu'], FILTER_SANITIZE_STRING);
-        $lieu->coord_x = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_STRING);
-        $lieu->coord_y = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_STRING);
+        $lieu->lat = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_STRING);
+        $lieu->lng = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_STRING);
         $lieu->indication = filter_var($request->getParsedBody()['indication'], FILTER_SANITIZE_STRING);
         $lieu->description = filter_var($request->getParsedBody()['description'], FILTER_SANITIZE_STRING);
         $lieu->image = filter_var($request->getParsedBody()['image'], FILTER_SANITIZE_STRING);
@@ -89,7 +89,6 @@ try{
           $errorMessage = ["error" => "id not found" ];
           $response->getBody()->write(json_encode($errorMessage));
       }
-    }
         return $response;
     }
 
