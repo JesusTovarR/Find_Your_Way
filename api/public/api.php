@@ -37,16 +37,22 @@ $configuration['notAllowedHandler'] = function ($c) {
 $configuration['notFoundHandler'] = function ($c) {
     return function ($request, $response){
         return $response->withStatus(404)
-            ->withHeader('Content-type', 'application/json')
+           ->withHeader('Content-type', 'application/json')
             ->write(json_encode(["Message"=>'URI not found']));
     };
 };
 
 $c = new \Slim\Container($configuration);
+
+$c['view'] = function($c){
+  $view = new \Slim\Views\Twig(__DIR__.'/backoffice/templates');
+
+   return $view;
+};
 $app = new Slim\App($c) ;
 
 $app->add(function ($rq, $rs, $next) {
-    $rs = $rs->withHeader('Content-Type', 'application/json');
+    $rs = $rs->withHeader('Content-Type', 'text/html');
     return $next($rq, $rs);
 });
 
@@ -128,10 +134,17 @@ $app->get('/utilisateurs/{id}',
         return (new UtilisateurController($this))->getUrilisateurById($req, $resp, $args);
     })->setName('getUtilisateurById');
 
+    //ajout d'un nouvel utilisateur
     $app->post('/newUser',
       function(Request $req, Response $resp, $args){
         return (new UtilisateurController($this))->addUser($req, $resp, $args);
       })->setName('addUser');
+
+    //formulaire pour ajouter un utilisateur
+    $app->get('/admin/formAjoutUtilisateur',
+    function(Request $req, Response $resp, $args){
+      return (new UtilisateurController($this))->renderFormAjoutUtilisateur($req, $resp, $args);
+    })->setName('renderFormAjoutUtilisateur');
 
       $app->get('/authentification',
       function (Request $req, Response $resp, $args){
