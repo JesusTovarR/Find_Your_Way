@@ -41,8 +41,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$ht
             LieuFactory.coordonees($scope.partie.id, $scope.partie.token).then(function (response){
 
                 $rootScope.coordonees=response.data;
-                console.log($scope.coordonees);
-                return $rootScope.coordonees;
+                console.log($rootScope.coordonees);
 
             },function (error) {
                 console.log('error');
