@@ -167,7 +167,7 @@ class LieuxController extends AbstractController
             {
                 $lieu = Lieu::select()->where('id', '=', $valeur)->firstOrFail();
                 $cont=$cont+1;
-                $coordonees['Lieu'.$cont.''.$lieu->nom_lieu] = ['lat'=>$lieu->lat, 'long'=>$lieu->lng];
+                $coordonees['Lieu'.$cont] = [$lieu->lat, $lieu->lng];
                 if($cont==5){
                     $cont=0;
                 }
