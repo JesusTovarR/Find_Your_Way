@@ -1,16 +1,16 @@
 
 angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$http', 'Lieu', 'LieuFactory',
     function($scope, $rootScope, $http, Lieu, LieuFactory){
-        $rootScope.in1=false;
-        $rootScope.in2=false;
-        $rootScope.in3=false;
-        $rootScope.in4=false;
-        $rootScope.in5=false;
-        $rootScope.destFinal1=false;
-        $rootScope.destFinal2=false;
-        $rootScope.destFinal3=false;
-        $rootScope.destFinal4=false;
-        $rootScope.destFinal5=false;
+        $rootScope.in1=true;
+        $rootScope.in2=true;
+        $rootScope.in3=true;
+        $rootScope.in4=true;
+        $rootScope.in5=true;
+        $rootScope.destFinal1=true;
+        $rootScope.destFinal2=true;
+        $rootScope.destFinal3=true;
+        $rootScope.destFinal4=true;
+        $rootScope.destFinal5=true;
 
         $scope.newGame = function () {
 
@@ -23,7 +23,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$ht
                 $scope.indices();
                 $scope.destinationFinal();
                 $scope.lieux();
-                $rootScope.in1=true;
+                $rootScope.in1=false;
             }, function (error) {
                 console.log('error');
             });

@@ -131,65 +131,65 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
 
     $scope.cambio=function(newValue) {
         if(newValue===true){
-            if($rootScope.in1===true){
-                $rootScope.in1=false;
-                $rootScope.in2=true;
-                $rootScope.in3=false;
-                $rootScope.in4=false;
-                $rootScope.in5=false;
-               // $rootScope.destFinal1=true;
-                if($rootScope.cont_click===true){
-                    $rootScope.destFinal1=true;
-                }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal1=false;
-                }
-            }else if($rootScope.in2===true){
-                $rootScope.in1=false;
+            if($rootScope.in1===false){
+                $rootScope.in1=true;
                 $rootScope.in2=false;
                 $rootScope.in3=true;
-                $rootScope.in4=false;
-                $rootScope.in5=false;
-              //  $rootScope.destFinal2=true;
+                $rootScope.in4=true;
+                $rootScope.in5=true;
+               // $rootScope.destFinal1=true;
                 if($rootScope.cont_click===true){
-                    $rootScope.destFinal2=true;
+                    $rootScope.destFinal1=false;
                 }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal2=false;
+                    $rootScope.destFinal1=true;
                 }
-            }else if($rootScope.in3===true){
-                $rootScope.in1=false;
-                $rootScope.in2=false;
+            }else if($rootScope.in2===false){
+                $rootScope.in1=true;
+                $rootScope.in2=true;
                 $rootScope.in3=false;
                 $rootScope.in4=true;
-                $rootScope.in5=false;
-              //  $rootScope.destFinal3=true;
+                $rootScope.in5=true;
+              //  $rootScope.destFinal2=true;
                 if($rootScope.cont_click===true){
-                    $rootScope.destFinal3=true;
+                    $rootScope.destFinal2=false;
                 }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal3=false;
+                    $rootScope.destFinal2=true;
                 }
-            }else if($rootScope.in4===true){
-                $rootScope.in1=false;
-                $rootScope.in2=false;
-                $rootScope.in3=false;
+            }else if($rootScope.in3===false){
+                $rootScope.in1=true;
+                $rootScope.in2=true;
+                $rootScope.in3=true;
                 $rootScope.in4=false;
                 $rootScope.in5=true;
+              //  $rootScope.destFinal3=true;
+                if($rootScope.cont_click===true){
+                    $rootScope.destFinal3=false;
+                }else if($rootScope.cont_click===false){
+                    $rootScope.destFinal3=true;
+                }
+            }else if($rootScope.in4===false){
+                $rootScope.in1=true;
+                $rootScope.in2=true;
+                $rootScope.in3=true;
+                $rootScope.in4=true;
+                $rootScope.in5=false;
                // $rootScope.destFinal4=true;
                 if($rootScope.cont_click===true){
-                    $rootScope.destFinal4=true;
-                }else if($rootScope.cont_click===false){
                     $rootScope.destFinal4=false;
+                }else if($rootScope.cont_click===false){
+                    $rootScope.destFinal4=true;
                 }
-            }else if($rootScope.in5===true){
-                $rootScope.in1=false;
-                $rootScope.in2=false;
-                $rootScope.in3=false;
-                $rootScope.in4=false;
-                $rootScope.in5=false;
+            }else if($rootScope.in5===false){
+                $rootScope.in1=true;
+                $rootScope.in2=true;
+                $rootScope.in3=true;
+                $rootScope.in4=true;
+                $rootScope.in5=true;
                // $rootScope.destFinal5=true;
                 if($rootScope.cont_click===true){
-                    $rootScope.destFinal5=true;
-                }else if($rootScope.cont_click===false){
                     $rootScope.destFinal5=false;
+                }else if($rootScope.cont_click===false){
+                    $rootScope.destFinal5=true;
                 }
             }
             cont_click=0;
