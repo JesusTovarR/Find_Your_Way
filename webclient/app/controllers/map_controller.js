@@ -10,7 +10,6 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
     var cont_lieu = 0;
     var cont_click=0;
 
-
     $scope.initMap = function () {
 
         flightPlanCoordinates = [];
