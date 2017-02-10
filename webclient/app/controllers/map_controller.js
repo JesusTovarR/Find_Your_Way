@@ -46,7 +46,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
 
         map.addListener('click', function (e) {
             cont_click=cont_click+1;
-            if(cont_click >= 2){
+            if(cont_click >= 3){
                 //si da mas de dos clicks entonces la variable se vuelve false
                 $rootScope.cont_click = false;
             }else{
