@@ -28,41 +28,45 @@
             <button class=" btn btn-primary" ng-click="cambio()">Regles du jeu</button>
             <button class=" btn btn-primary" ng-click="newGame()">Demarrer</button>
             <button ng-controller="MapController" class=" btn btn-primary" ng-click="initMap()">Redemarrer</button>
+            <div class=" btn btn-primary">Score : {{score}}</div>
         </div>
     </nav>
-<!--    <div ng-repeat="indication in indications" >
-        <indication></indication>
-    </div> -->
-    <div class="indication-block ind" ng-hide="in1">
-        <h6>{{indications.Lieu1.indic}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="in2" >
-        <h6>{{indications.Lieu2.indic}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="in3">
-        <h6>{{indications.Lieu3.indic}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="in4">
-        <h6>{{indications.Lieu4.indic}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="in5">
-        <h6>{{indications.Lieu5.indic}}</h6>
+    <div class="lieux">
+        <h3>Indications</h3>
+        <div class="indication-block ind" ng-hide="in5">
+            <h5>{{indications.Lieu5.indic}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="in4" >
+            <h5>{{indications.Lieu4.indic}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="in3">
+            <h5>{{indications.Lieu3.indic}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="in2">
+            <h5>{{indications.Lieu2.indic}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="in1">
+            <h5>{{indications.Lieu1.indic}}</h5>
+        </div>
     </div>
     <hr/>
-    <div class="indication-block ind" ng-hide="destFinal1">
-        <h6>{{indices.indice1}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="destFinal2">
-        <h6>{{indices.indice2}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="destFinal3">
-        <h6>{{indices.indice3}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="destFinal4">
-        <h6>{{indices.indice4}}</h6>
-    </div>
-    <div class="indication-block ind" ng-hide="destFinal5">
-        <h6>{{indices.indice5}}</h6>
+    <div class="destFinal">
+        <h3>Indices recoltes</h3>
+        <div class="indication-block ind" ng-hide="destFinal1">
+            <h5>{{indices.indice1}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="destFinal2">
+            <h5>{{indices.indice2}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="destFinal3">
+            <h5>{{indices.indice3}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="destFinal4">
+            <h5>{{indices.indice4}}</h5>
+        </div>
+        <div class="indication-block ind" ng-hide="destFinal5">
+            <h5>{{indices.indice5}}</h5>
+        </div>
     </div>
 
 </div>
