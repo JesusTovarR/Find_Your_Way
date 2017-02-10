@@ -74,6 +74,11 @@ class UtilisateurController extends AbstractController
       return $response;
     }
 
+    // formulaire pour ajouter un utilisateur
+    public function renderFormAjoutUtilisateur(Request $request, Response $response, $args){
+      return $this->container->view->render($response, 'ajoutUtilisateur.html.twig');
+    }
+
 
 //a finir
     public function checkUser(Request $request, Response $response, $args){
