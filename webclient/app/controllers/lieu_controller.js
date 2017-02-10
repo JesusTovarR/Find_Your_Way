@@ -1,9 +1,13 @@
 
 angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$http', 'Lieu', 'LieuFactory',
     function($scope, $rootScope, $http, Lieu, LieuFactory){
-
-        $scope.in1=true;
-        $scope.desFin=false;
+        $scope.indic={
+            "indication1": true,
+            "indication2": false,
+            "indication3": false,
+            "indication4": false,
+            "indication5": false,
+            "desFinal": false};
 
         $scope.newGame = function () {
 
@@ -11,7 +15,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$ht
                 $scope.error = undefined;
                 $rootScope.partie = response.data;
                 $scope.indications();
-                // $scope.coordonees();
+                $scope.coordonees();
                 $scope.chemin();
                 $scope.indices();
                 $scope.destinationFinal();
@@ -33,17 +37,16 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$ht
             });
         };
 
-       /* $scope.coordonees = function (){
+        $scope.coordonees = function (){
             LieuFactory.coordonees($scope.partie.id, $scope.partie.token).then(function (response){
 
-                $scope.coordonees=response.data;
-                console.log($scope.coordonees);
-                return $scope.coordonees;
+                $rootScope.coordonees=response.data;
+                console.log($rootScope.coordonees);
 
             },function (error) {
                 console.log('error');
             });
-        };*/
+        };
 
 
         $scope.chemin = function (){
@@ -89,5 +92,15 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope', '$ht
                 console.log('error');
             });
         };
+
+        $scope.$watch($scope.indic,function(newValue,oldValue) {
+
+            if (newValue===oldValue) {
+                return;
+            }
+
+            alert("El nuevo valor es " + newValue);
+        });
+
     }
 ]);

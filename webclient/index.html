@@ -29,12 +29,12 @@
         <div class="text-center">
             <button class=" btn btn-primary">Regles du jeu</button>
             <button class=" btn btn-primary" ng-click="newGame()">Demarrer</button>
-            <button class=" btn btn-primary">Redemarrer</button>
+            <button ng-controller="MapController" class=" btn btn-primary" ng-click="initMap()">Redemarrer</button>
         </div>
     </nav>
 <!--    <div ng-repeat="indication in indications" >
         <indication></indication>
-    </div>-->
+    </div> -->
     <div class="indication-block ind" >
         <h6>{{indications.Lieu1.indic}}</h6>
     </div>

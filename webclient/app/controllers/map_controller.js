@@ -77,14 +77,14 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
 
         var lieu = new google.maps.LatLng($rootScope.coordonees[cont_lieu]);
         var distance = google.maps.geometry.spherical.computeDistanceBetween(lieu, latLng);
-        //console.log(distance);
+        console.log(distance);
 
 
         if (flightPlanCoordinates.length <= 4) {
             $rootScope.acierto=false;
             if (distance < 50000) {
                 cont_lieu = cont_lieu + 1;
-                //console.log($rootScope.coordonees[cont_lieu]);
+                console.log($rootScope.coordonees[cont_lieu]);
 
 
                 //console.log(flightPlanCoordinates);
