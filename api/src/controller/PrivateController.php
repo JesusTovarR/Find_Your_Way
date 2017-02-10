@@ -117,12 +117,13 @@ try{
       $lieu->delete();
 
       $response = $this->json_success($response, 201, "deletion done");
-      return $response;
+      // return $response;
     }catch(ModelNotFoundException $e) {
         $response = $response->withStatus(404)->withHeader('Content-type', 'application/json');
         $errorMessage = ["error" => "id not found" ];
         $response->getBody()->write(json_encode($errorMessage));
     }
+    return $response;
   }
 
   public function adminLieu(Request $request, Response $response, $args){
@@ -140,5 +141,16 @@ try{
   // formulaire pour l'ajout d'un lieu
   public function renderFormAjoutLieu(Request $request, Response $response, $args){
     return $this->container->view->render($response, 'ajoutLieu.html.twig');
+  }
+
+  public function deleteGame(Request $request, Response $response, $args){
+    try{
+    Partie::destroy($args['id_partie']);
+    $response = $this->json_success($response, 201, "deletion done");
+  }catch(ModelNotFoundException $e){
+    $response = $response->withStatus(404)->withHeader('Content-type', 'application/json');
+    $errorMessage = ["error" => "id not found" ];
+    $response->getBody()->write(json_encode($errorMessage));
+  }
   }
 }
