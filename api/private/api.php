@@ -87,5 +87,10 @@ $app->get('/admin/lieux',
     return (new privateController($this))->adminLieu($req, $resp, $args);
   })->setName('adminLieu');
 
+  $app->delete('/admin/game/{id_partie}/delete',
+  function (Request $req, Response $resp, $args){
+    return (new privateController($this))->deleteGame($req, $resp, $args);
+  })->setName('deleteGame');
+
 
 $app->run();

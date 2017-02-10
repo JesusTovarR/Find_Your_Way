@@ -30,7 +30,7 @@ class LieuxController extends AbstractController
       $generator = $factory->getMediumStrengthGenerator();
 
       $game->token = $generator->generateString(32, 'abcdefghijklmnopqrstuvwxyz123456789');
-      $game->distanceDF = 100;
+      $game->distanceDF = 5000;
       $score = 0;
       $chemin = new Chemin;
 
