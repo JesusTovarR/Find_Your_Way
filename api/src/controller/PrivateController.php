@@ -70,7 +70,6 @@ class PrivateController extends AbstractController
     public function modifierLieu(Request $request, Response $response, $args){
 try{
         $lieu = Lieu::select()->where('id','=',$args['id'])->firstOrFail();
-        //  var_dump($request->getParsedBody());die;
         $lieu->nom_lieu = filter_var($request->getParsedBody()['nom_lieu'], FILTER_SANITIZE_STRING);
         $lieu->lat = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_STRING);
         $lieu->lng = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_STRING);

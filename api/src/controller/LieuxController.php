@@ -35,44 +35,41 @@ class LieuxController extends AbstractController
       $chemin = new Chemin;
 
       $destFinales = Lieu::select()->where('dest_finale', '=', 1)->get();
-      $nbDestFinales = Lieu::select()->where('dest_finale', '=', 1)->count();
-      $lieux = Lieu::select()->get();
-      $nbLieux = Lieu::select()->count();
+      $dest = $destFinales->random();
+      $chemin->id_dest_finale = (int)$dest->id;
 
-      $tabDest = json_decode(json_encode($destFinales), true);
-      $destinationFinale = $tabDest[rand(0, $nbDestFinales-1)];
+      $colLieux = Lieu::select()->where('id', '!=', $chemin->id_dest_finale)->get();
+      $lieux = $colLieux->toArray();
 
-      $tabLieux = json_decode(json_encode($lieux), true);
-      $chemin->id_dest_finale = (int)$destinationFinale['id'];
+    $k = array_rand($lieux);
+    $randomLieu = $lieux[$k];
+    $chemin->id_lieu1 = $randomLieu['id'];
+    unset($lieux[$k]);
 
-      $tmp = rand(0, count($tabLieux)-1);
-      $chemin->id_lieu1 = (int)$tabLieux[$tmp]['id'];
-      unset($tabLieux[$tmp]);
-      $tabLieux = array_values($tabLieux);
+    $k = array_rand($lieux);
+    $randomLieu = $lieux[$k];
+    $chemin->id_lieu2 = $randomLieu['id'];
+    unset($lieux[$k]);
 
-      $tmp = rand(0, count($tabLieux)-1);
-      $chemin->id_lieu2 = (int)$tabLieux[$tmp]['id'];
-      unset($tabLieux[$tmp]);
-      $tabLieux = array_values($tabLieux);
+    $k = array_rand($lieux);
+    $randomLieu = $lieux[$k];
+    $chemin->id_lieu3 = $randomLieu['id'];
+    unset($lieux[$k]);
 
-      $tmp = rand(0, count($tabLieux)-1);
-      $chemin->id_lieu3 = (int)$tabLieux[$tmp]['id'];
-      unset($tabLieux[$tmp]);
-      $tabLieux = array_values($tabLieux);
+    $k = array_rand($lieux);
+    $randomLieu = $lieux[$k];
+    $chemin->id_lieu4 = $randomLieu['id'];
+    unset($lieux[$k]);
 
-      $tmp = rand(0, count($tabLieux)-1);
-      $chemin->id_lieu4 = (int)$tabLieux[$tmp]['id'];
-      unset($tabLieux[$tmp]);
-      $tabLieux = array_values($tabLieux);
+    $k = array_rand($lieux);
+    $randomLieu = $lieux[$k];
+    $chemin->id_lieu5 = $randomLieu['id'];
+    unset($lieux[$k]);
 
-      $tmp = rand(0, count($tabLieux)-1);
-      $chemin->id_lieu5 = (int)$tabLieux[$tmp]['id'];
-      unset($tabLieux[$tmp]);
-      $tabLieux = array_values($tabLieux);
+    $chemin->save();
 
-      $chemin->save();
-      $game->id_chemin = $chemin->id;
-      $game->save();
+    $game->id_chemin = $chemin->id;
+    $game->save();
 
       $response = $this->json_success($response, 201, $game->toJson());
     }
@@ -262,19 +259,19 @@ class LieuxController extends AbstractController
     }
 
 
-    //Obtenir les 5 lieux d'une partie /game/{id_partie}/lieux_partie?token={}
-    public function getLieuxPartie(Request $request, Response $response, $args){
-      try{
-        $response = $response->withStatus(200)->withHeader('Content-type', 'application/json');
-        $partie = Partie::select()->where('id', '=', $args['id_partie'])->firstOrFail();
-        $chemin = Chemin::select('id_lieu1', 'id_lieu2', 'id_lieu3', 'id_lieu4', 'id_lieu5')->where('id', '=', $partie->id_chemin)->firstOrFail();
-        $lieux_partie = array();
-        $lieuxPassage = json_decode(json_encode($chemin), true);
-        $compteur = 1;
+        //Obtenir les 5 lieux d'une partie /game/{id_partie}/lieux_partie?token={}
+        public function getLieuxPartie(Request $request, Response $response, $args){
+          try{
+            $response = $response->withStatus(200)->withHeader('Content-type', 'application/json');
+            $partie = Partie::select()->where('id', '=', $args['id_partie'])->firstOrFail();
+            $chemin = Chemin::select('id_lieu1', 'id_lieu2', 'id_lieu3', 'id_lieu4', 'id_lieu5')->where('id', '=', $partie->id_chemin)->firstOrFail();
+            $lieux_partie = array();
+            $lieuxPassage = json_decode(json_encode($chemin), true);
+            $compteur = 1;
 
-        foreach ($lieuxPassage as $idLieu){
-          $lieu = Lieu::select('nom_lieu', 'lat', 'lng', 'indication', 'description', 'image')->where('id','=', $idLieu)->firstOrFail();
-          $lieux_partie['Lieu'.$compteur] = $lieu;
+            foreach ($lieuxPassage as $idLieu){
+              $lieu = Lieu::select('nom_lieu', 'lat', 'lng', 'indication', 'description', 'image')->where('id','=', $idLieu)->firstOrFail();
+              $lieux_partie['Lieu'.$compteur] = $lieu;
           $compteur++;
         }
         $response->getBody()->write(json_encode($lieux_partie));
