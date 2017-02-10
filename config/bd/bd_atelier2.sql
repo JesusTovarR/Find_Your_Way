@@ -85,7 +85,7 @@ null,null,null,null,null,0
 );
 
 INSERT INTO lieu VALUES (null,'Dijon',47.3237985,5.03861459999996,
-'Sa moutarde très connue',
+'Sa moutarde est très connue',
 null,
 'img/Dijon.jpg'
 ,null,null,null,null,null,0);
