@@ -51,7 +51,9 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
             }else{
                 $rootScope.cont_click = true;
             }
-            $scope.placeMarkerAndPanTo(e.latLng, map);
+            $scope.$apply(function(){
+                $scope.placeMarkerAndPanTo(e.latLng, map);
+            });
         });
 
         //metodo para medir las distancias
@@ -107,8 +109,10 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
                 flightPlanCoordinates.push(latLng);
                 //cuando acierta la variable se vuelve true
                 $rootScope.acierto = true;
+                $scope.cambio($rootScope.acierto);
             }else{
                 alert("Désolé, Réessaie!");
+                $scope.cambio($rootScope.acierto);
             }
 
             var flightPath = new google.maps.Polyline({
@@ -125,6 +129,62 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
         }
     };
 
+    $scope.cambio=function(newValue) {
+        console.log(newValue);
+        console.log($rootScope.in1);
+        console.log($rootScope.in2);
+        console.log($rootScope.in3);
+        console.log($rootScope.in4);
+        console.log($rootScope.in5);
+
+        if(newValue===true){
+            if($rootScope.in1===true){
+                $rootScope.in1=false;
+                $rootScope.in2=true;
+                $rootScope.in3=false;
+                $rootScope.in4=false;
+                $rootScope.in5=false;
+                $rootScope.destFinal1=true;
+            }else if($rootScope.in2===true){
+                $rootScope.in1=false;
+                $rootScope.in2=false;
+                $rootScope.in3=true;
+                $rootScope.in4=false;
+                $rootScope.in5=false;
+                $rootScope.destFinal2=true;
+            }else if($rootScope.in3===true){
+                $rootScope.in1=false;
+                $rootScope.in2=false;
+                $rootScope.in3=false;
+                $rootScope.in4=true;
+                $rootScope.in5=false;
+                $rootScope.destFinal3=true;
+            }else if($rootScope.in4===true){
+                $rootScope.in1=false;
+                $rootScope.in2=false;
+                $rootScope.in3=false;
+                $rootScope.in4=false;
+                $rootScope.in5=true;
+                $rootScope.destFinal4=false;
+            }else if($rootScope.in5===true){
+                $rootScope.in1=false;
+                $rootScope.in2=false;
+                $rootScope.in3=false;
+                $rootScope.in4=false;
+                $rootScope.in5=false;
+                $rootScope.destFinal5=true;
+            }
+        }else{
+            return;
+        }
+        console.log('-------------------');
+        console.log(newValue);
+        console.log($rootScope.in1);
+        console.log($rootScope.in2);
+        console.log($rootScope.in3);
+        console.log($rootScope.in4);
+        console.log($rootScope.in5);
+    };
 
     $scope.initMap();
 

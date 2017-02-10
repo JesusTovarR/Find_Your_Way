@@ -21,12 +21,13 @@ class PrivateController extends AbstractController
 
     public function addLieu(Request $request, Response $response, $args){
       $lieu = new Lieu;
-      if(isset($request->getParsedBody()['coord_x']) &&
-         isset($request->getParsedBody()['coord_y']) &&
+      if(isset($request->getParsedBody()['lat']) &&
+         isset($request->getParsedBody()['lng']) &&
          isset($request->getParsedBody()['indication']) &&
          isset($request->getParsedBody()['description'])){
-           $lieu->lat = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_NUMBER_FLOAT);
-           $lieu->long = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_NUMBER_FLOAT);
+           $lieu->nom_lieu = filter_var($request->getParsedBody()['nom_lieu'], FILTER_SANITIZE_STRING);
+           $lieu->lat = filter_var($request->getParsedBody()['lat'], FILTER_SANITIZE_NUMBER_FLOAT);
+           $lieu->lng = filter_var($request->getParsedBody()['lng'], FILTER_SANITIZE_NUMBER_FLOAT);
            $lieu->indication = filter_var($request->getParsedBody()['indication'], FILTER_SANITIZE_STRING);
            $lieu->description = filter_var($request->getParsedBody()['description'], FILTER_SANITIZE_STRING);
            $lieu->dest_finale = 0;
@@ -71,8 +72,8 @@ class PrivateController extends AbstractController
 try{
         $lieu = Lieu::select()->where('id','=',$args['id'])->firstOrFail();
         $lieu->nom_lieu = filter_var($request->getParsedBody()['nom_lieu'], FILTER_SANITIZE_STRING);
-        $lieu->lat = filter_var($request->getParsedBody()['coord_x'], FILTER_SANITIZE_STRING);
-        $lieu->lng = filter_var($request->getParsedBody()['coord_y'], FILTER_SANITIZE_STRING);
+        $lieu->lat = filter_var($request->getParsedBody()['lat'], FILTER_SANITIZE_STRING);
+        $lieu->lng = filter_var($request->getParsedBody()['lng'], FILTER_SANITIZE_STRING);
         $lieu->indication = filter_var($request->getParsedBody()['indication'], FILTER_SANITIZE_STRING);
         $lieu->description = filter_var($request->getParsedBody()['description'], FILTER_SANITIZE_STRING);
         $lieu->image = filter_var($request->getParsedBody()['image'], FILTER_SANITIZE_STRING);
@@ -134,5 +135,10 @@ try{
     $lieu = Lieu::select()->where('id', '=', $args['id'])->firstOrFail();
     $lieu = $lieu->toArray();
     return $this->container->view->render($response, 'lieu.html.twig',  ['lieu' => $lieu]);
+  }
+
+  // formulaire pour l'ajout d'un lieu
+  public function renderFormAjoutLieu(Request $request, Response $response, $args){
+    return $this->container->view->render($response, 'ajoutLieu.html.twig');
   }
 }
