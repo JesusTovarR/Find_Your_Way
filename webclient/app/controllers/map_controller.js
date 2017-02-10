@@ -16,6 +16,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
         flightPlanCoordinates = [];
         cont_lieu = 0;
         cont_click=0;
+        $scope.score=0;
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: myLatLng,
@@ -84,7 +85,21 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
 
         if (flightPlanCoordinates.length <= 4) {
             $rootScope.acierto=false;
-            if (distance < 50000) {
+            if (distance < 10*$rootScope.partie.distanceDF) {
+
+                if(distance >= 0 && distance <= 2*$rootScope.partie.distanceDF){
+                   $scope.score=10;
+                }else if(distance >= 2*$rootScope.partie.distanceDF && distance <= 4*$rootScope.partie.distanceDF){
+                    $scope.score=8;
+                }else if(distance >= 4*$rootScope.partie.distanceDF && distance <= 6*$rootScope.partie.distanceDF){
+                    $scope.score=6;
+                }else if(distance >= 6*$rootScope.partie.distanceDF && distance <= 8*$rootScope.partie.distanceDF){
+                    $scope.score=3;
+                }else if(distance >= 8*$rootScope.partie.distanceDF && distance <= 10*$rootScope.partie.distanceDF){
+                    $scope.score=1;
+                }
+
+                console.log($scope.score);
                 cont_lieu = cont_lieu + 1;
                 console.log($rootScope.coordonees[cont_lieu]);
 
