@@ -46,10 +46,17 @@ $c['view'] = function($c){
 
 $app = new Slim\App($c) ;
 
-$app->post('/lieu',
+// ajout d'un lieu
+$app->post('/admin/lieu',
 function (Request $req, Response $resp, $args){
   return (new privateController($this))->addLieu($req, $resp, $args);
 })->setName('addLieu');
+
+//formulaire pour l'ajout d'un lieu
+$app->get('/admin/formAjoutLieu',
+function(Request $req, Response $resp, $args){
+  return (new privateController($this))->renderFormAjoutLieu($req, $resp, $args);
+})->setName('renderFormAjoutLieu');
 
 $app->post('/lieu/{id}/nouvelIndice',
 function (Request $req, Response $resp, $args){
