@@ -45,8 +45,8 @@ html, body {
 }
 
 .ng-hide-add         {
-    -webkit-animation:3s lightSpeedOut ease;
-    animation:3s lightSpeedOut ease;
+    -webkit-animation:1s lightSpeedOut ease;
+    animation:1s lightSpeedOut ease;
 }
 
 .ng-hide-remove      {
