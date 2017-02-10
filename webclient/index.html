@@ -27,7 +27,7 @@
             <h3 class="text-muted">Find Your Way</h3>
         </div>
         <div class="text-center">
-            <button class=" btn btn-primary">Regles du jeu</button>
+            <button class=" btn btn-primary" ng-click="cambio()">Regles du jeu</button>
             <button class=" btn btn-primary" ng-click="newGame()">Demarrer</button>
             <button ng-controller="MapController" class=" btn btn-primary" ng-click="initMap()">Redemarrer</button>
         </div>
@@ -35,24 +35,36 @@
 <!--    <div ng-repeat="indication in indications" >
         <indication></indication>
     </div> -->
-    <div class="indication-block ind" >
+    <div class="indication-block ind" ng-show="in1">
         <h6>{{indications.Lieu1.indic}}</h6>
     </div>
-    <div class="indication-block ind" >
+    <div class="indication-block ind" ng-show="in2" >
         <h6>{{indications.Lieu2.indic}}</h6>
     </div>
-    <div class="indication-block ind" >
+    <div class="indication-block ind" ng-show="in3">
         <h6>{{indications.Lieu3.indic}}</h6>
     </div>
-    <div class="indication-block ind">
+    <div class="indication-block ind" ng-show="in4">
         <h6>{{indications.Lieu4.indic}}</h6>
     </div>
-    <div class="indication-block ind">
+    <div class="indication-block ind" ng-show="in5">
         <h6>{{indications.Lieu5.indic}}</h6>
     </div>
     <hr/>
-    <div ng-repeat="indice in indices">
-        <indice></indice>
+    <div class="indication-block ind" ng-show="destFinal1">
+        <h6>{{indices.indice1}}</h6>
+    </div>
+    <div class="indication-block ind" ng-show="destFinal2">
+        <h6>{{indices.indice2}}</h6>
+    </div>
+    <div class="indication-block ind" ng-show="destFinal3">
+        <h6>{{indices.indice3}}</h6>
+    </div>
+    <div class="indication-block ind" ng-show="destFinal4">
+        <h6>{{indices.indice4}}</h6>
+    </div>
+    <div class="indication-block ind" ng-show="destFinal5">
+        <h6>{{indices.indice5}}</h6>
     </div>
 
 </div>
