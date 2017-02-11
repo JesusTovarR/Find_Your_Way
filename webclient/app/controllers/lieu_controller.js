@@ -12,6 +12,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $rootScope.destFinal4=true;
         $rootScope.destFinal5=true;
         $scope.fini=true;
+        $rootScope.niveau=1;
 
         $scope.regle=false;
         $scope.button=true;
@@ -64,17 +65,24 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                     $rootScope.trouver=true;
                     $scope.fini=false;
                     $scope.indicationsRegles2=true;
+                    if($rootScope.niveau<=4){
+                        $rootScope.niveau=$rootScope.niveau+1;
+                    }else if($rootScope.niveau>=5){
+                        $rootScope.niveau=1;
+                    }
                 }else if($scope.counter===0){
                     $scope.stop();
                     $rootScope.gameOver=false;
                     $scope.indicationsRegles=true;
                     $scope.indicationsRegles2=true;
+                    $rootScope.niveau=1;
                     $rootScope.carte=true;
                 }else if( $rootScope.cont_click_dest_final===5){
                     $scope.stop();
                     $rootScope.gameOver=false;
                     $scope.indicationsRegles=true;
                     $scope.indicationsRegles2=true;
+                    $rootScope.niveau=1;
                     $rootScope.carte=true;
                 }else{
                     $scope.countdown();
@@ -239,7 +247,17 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $rootScope.trouver=true;
                 $rootScope.carte=false;
                 $rootScope.score=0;
+            if($rootScope.niveau===1){
                 $scope.counter = 90;
+            }else if($rootScope.niveau===2){
+                $scope.counter = 80;
+            }else if($rootScope.niveau===3){
+                $scope.counter = 70;
+            }else if($rootScope.niveau===4){
+                $scope.counter = 50;
+            }else if($rootScope.niveau===5){
+                $scope.counter = 30;
+            }
                 $scope.ritme=1000;
                 $scope.newGame();
         };
