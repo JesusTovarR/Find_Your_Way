@@ -1,31 +1,93 @@
 <!DOCTYPE html>
 <head>
     <title>Ajouter un nouveau lieu</title>
-    {% block stylesheets %}
-        <link href="{{ asset('../../../../lib/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
-    {% endblock %}
-    <link href="../../../../lib/css/style.css" type="text/css" rel="stylesheet"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 </head>
+
 <body>
 <h2>Nouveau lieu</h2>
 <!--TODO: ajouter des informations sur les champs pour l'utilisateur-->
-<form role="form" method = "post" action="http://admin.findyourway.local/admin/lieu">
+<form class="form-horizontal" method = "post" action="http://admin.findyourway.local/admin/lieu">
+
     <div class="form-group">
-        <label for="nom_lieu"> Nombre:* </label>
+        <label class="col-lg-2 control-label" for="nom_lieu"> Nombre:* </label>
+        <div class="col-lg-8">
         <input class="form-control" type="text" name="nom_lieu" id="nom_lieu">
+        </div>
     </div>
-    <label for="lat"> Latitude:* </label> <input type="text" name="lat" id="lat"><br>
-    <label for="lng"> Longitude:* </label> <input type="text" name="lng" id="lng"><br>
-    <label for="indication"> Indication:* </label> <input type="text" name="indication" id="indication"><br>
-    <label for="description"> Description: </label><input type="text" name="description" id="description"><br>
-    <label for="Image"> Image: </label> <input type="text" name="image" id="Image"><br>
-    <label for="indice1"> Indice1:* </label> <input type="text" name="indice1" id="indice1"><br>
-    <label for="indice2"> Indice2:* </label> <input type="text" name="indice2" id="indice2"><br>
-    <label for="indice3"> Indice3:* </label> <input type="text" name="indice3" id="indice3"><br>
-    <label for="indice4"> Indice4:* </label> <input type="text" name="indice4" id="indice4"><br>
-    <label for="indice5"> Indice5:* </label> <input type="text" name="indice6" id="indice7"><br>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="lat"> Latitude:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="lat" id="lat">
+        </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="lng"> Longitude:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="lng" id="lng">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="indication"> Indication:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" class="form-control" type="text" name="indication" id="indication">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="description"> Description: </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="description" id="description">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="Image"> Image: </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="image" id="Image">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="indice1"> Indice1:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="indice1" id="indice1">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="indice2"> Indice2:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="indice2" id="indice2">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="indice3"> Indice3:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="indice3" id="indice3">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="indice4"> Indice4:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="indice4" id="indice4">
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-lg-2" for="indice5"> Indice5:* </label>
+        <div class="col-lg-8">
+    <input class="form-control" type="text" name="indice6" id="indice7">
+    </div>
+    </div>
+
     <label for="dest_final"> Ajouter en tant que destination finale:* </label>
-    <select name="dest_finale" id="dest_finale">
+    <select class="form-control" name="dest_finale" id="dest_finale">
         <option value="0" selected>No</option>
         <option value="1">oui</option>
     </select><br>

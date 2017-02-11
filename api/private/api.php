@@ -46,6 +46,14 @@ $c['view'] = function($c){
 
 $app = new Slim\App($c) ;
 
+/*
+Twig_Autoloader::register();
+$loader = new Twig_Loader_Filesystem('backoffice/templates');
+$twig = new Twig_Environment($loader); $twig->addFunction(new \Twig_SimpleFunction('asset', function ($asset) {
+// implement whatever logic you need to determine the asset path
+return sprintf('../assets/%s', ltrim($asset, '/')); }));
+*/
+
 // ajout d'un lieu
 $app->post('/admin/lieu',
 function (Request $req, Response $resp, $args){
