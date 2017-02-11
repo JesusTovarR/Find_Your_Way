@@ -1,20 +1,34 @@
 <!DOCTYPE html>
-<head> <title>Ajouter un nouveau lieu</title> </head>
+<head>
+    <title>Ajouter un nouveau lieu</title>
+    {% block stylesheets %}
+        <link href="{{ asset('../../../../lib/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+    <link href="../../../../lib/css/style.css" type="text/css" rel="stylesheet"/>
+</head>
 <body>
 <h2>Nouveau lieu</h2>
 <!--TODO: ajouter des informations sur les champs pour l'utilisateur-->
-<form method = "post" action="http://admin.findyourway.local/admin/lieu">
-Nom du lieu :* <input type="text" name="nom_lieu"><br>
-latitude :* <input type="text" name="lat"><br>
-longitude :* <input type="text" name="lng"><br>
-indication :* <input type="text" name="indication"><br>
-description : <input type="text" name="description"><br>
-image : <input type="text" name="image"><br>
-indice n°1 : <input type="text" name="indice1"><br>
-indice n°2 : <input type="text" name="indice2"><br>
-indice n°3 : <input type="text" name="indice3"><br>
-indice n°4 : <input type="text" name="indice4"><br>
-indice n°5 : <input type="text" name="indice5"><br>
+<form role="form" method = "post" action="http://admin.findyourway.local/admin/lieu">
+    <div class="form-group">
+        <label for="nom_lieu"> Nombre:* </label>
+        <input class="form-control" type="text" name="nom_lieu" id="nom_lieu">
+    </div>
+    <label for="lat"> Latitude:* </label> <input type="text" name="lat" id="lat"><br>
+    <label for="lng"> Longitude:* </label> <input type="text" name="lng" id="lng"><br>
+    <label for="indication"> Indication:* </label> <input type="text" name="indication" id="indication"><br>
+    <label for="description"> Description: </label><input type="text" name="description" id="description"><br>
+    <label for="Image"> Image: </label> <input type="text" name="image" id="Image"><br>
+    <label for="indice1"> Indice1:* </label> <input type="text" name="indice1" id="indice1"><br>
+    <label for="indice2"> Indice2:* </label> <input type="text" name="indice2" id="indice2"><br>
+    <label for="indice3"> Indice3:* </label> <input type="text" name="indice3" id="indice3"><br>
+    <label for="indice4"> Indice4:* </label> <input type="text" name="indice4" id="indice4"><br>
+    <label for="indice5"> Indice5:* </label> <input type="text" name="indice6" id="indice7"><br>
+    <label for="dest_final"> Ajouter en tant que destination finale:* </label>
+    <select name="dest_finale" id="dest_finale">
+        <option value="0" selected>No</option>
+        <option value="1">oui</option>
+    </select><br>
 <input type="submit" value="Ajouter">
 </form>
 
