@@ -11,4 +11,4 @@ Pour les librairies, faire 'composer install' dans le dossier www/Find_Your_Way/
 La BD se trouve egalement dans www/Find_Your_Way/findyourway.sql.
 Il faut l'importer via l'URL http://arche-web.local/adminer.php {login: root; mdp: root}
 
-Documentation de l'api www/Find_Your_Way/documentation_api.pdf
+Documentation de l'api www/Find_Your_Way/docs/Documentation_api.pdf

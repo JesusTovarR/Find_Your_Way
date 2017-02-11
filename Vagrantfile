@@ -27,7 +27,7 @@ vhost_d_public         = "/var/www/Find_Your_Way/webclient"
 vhost_s_api_public       = "backend.findyourway.local"
 vhost_d_api_public        = "/var/www/Find_Your_Way/api/public"
 
-vhost_s_api_private         = "admin.findYourWay.local"
+vhost_s_api_private         = "admin.findyourway.local"
 vhost_d_api_private      = "/var/www/Find_Your_Way/api/private"
 
 # Set a local private network IP address.
