@@ -118,7 +118,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
             LieuFactory.destinationFinal($scope.partie.id, $scope.partie.token).then(function (response){
 
                  console.log( $scope.destinationFinal=response.data);
-                return $scope.destinationFinal=response.data;
+                    $rootScope.destinationFinal=response.data;
 
             },function (error) {
                 console.log('error');
