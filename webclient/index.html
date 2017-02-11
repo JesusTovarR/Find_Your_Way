@@ -40,7 +40,6 @@
             <div class="indication-block ">
                 <h5>But du jeu : trouver la destination finale !</h5>
             </div>
-            <button class=" btn btn-primary" ng-click="next()" ng-disabled="disNext">--></button>
             <div class="indication-block ind" ng-hide="regle1">
                 <p>
                     1.-Au démarrage d’une partie, une indication sera affichée à l’écran.
@@ -83,13 +82,14 @@
                     6.-S’il trouve la destination finale, il gagne la partie !
                 </p>
             </div>
-            <button class=" btn btn-primary" ng-click="back()" ng-disabled="disBack"><--</button>
+            <button class=" btn btn-primary" ng-click="back()" ng-disabled="disBack"><img src="img/back.png"/></button>
+            <button class=" btn btn-primary next" ng-click="next()" ng-disabled="disNext"><img src="img/next.png"/></button>
 
 
         </div>
         <div class="lieux" ng-hide="indicationsRegles">
             <h3>Indications</h3>
-            <div class="indication-block ind2" ng-hide="fini">
+            <div class="indication-block ind2" id="felisitation" ng-hide="fini">
                 <h5>Bien! Felicitations, vous avez trouve la destination final.</h5>
                 <img src="img/felisitation.jpg"/>
             </div>

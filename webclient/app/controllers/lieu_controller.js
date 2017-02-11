@@ -223,7 +223,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $rootScope.destFinal5=true;
                 $scope.fini=true;
 
-                $scope.regle=false;
+                $scope.regle=true;
                 $scope.button=true;
                 $scope.regle1=false;
                 $scope.regle2=true;

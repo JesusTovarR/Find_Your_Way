@@ -66,14 +66,23 @@ p{
     height:300px;
 }
 
-.regles button{
-   width: 100%;
-}
-
 .destFinal{
     height: 300px;
 }
 
+#felisitation img{
+    margin-bottom: 10px;
+}
+.regles button img{
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    width: 51.2px;
+    height: 51.2px;
+}
+
+.next{
+    float: right;
+}
 
 .regles.ng-hide-add{
     transition: 0s;
