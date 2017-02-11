@@ -65,22 +65,25 @@ $app->add(function ($rq, $rs, $next){
     return $next($rq, $rs);
 });
 
+//creer d'une partie
 $app->get('/partie/new',
 function(Request $req, Response $resp, $args){
   return (new LieuxController($this))->newGame($req, $resp, $args);
 })->setName('newGame');
 
+//obtenir un lieu avec son id
 $app->get('/lieu/{id}',
 function (Request $req, Response $resp, $args){
   return (new LieuxController($this))->getLieuById($req, $resp, $args);
 })->setName('lieu');
 
+//obtenir la collection de lieux
 $app->get('/lieux',
   function (Request $req, Response $resp, $args){
     return (new LieuxController($this))->getLieux($req, $resp, $args);
   })->setName('getAllLieux');
 
-  //retourne toute les destinations finales possibles
+  //retourne toutes les destinations finales possibles
   $app->get('/destFinales',
   function (Request $req, Response $resp, $args){
     return (new LieuxController($this))->getDestFinale($req, $resp, $args);
@@ -93,7 +96,7 @@ $app->get('/lieux',
   })->setName('indications')
     ->add('checkToken');
 
-    //Obtenir les coordonees de chaque lieu pour une partie /game/id_partie/indications?token{}
+    //Obtenir les coordonees de chaque lieu pour une partie /game/id_partie/coordonnees?token{}
     $app->get('/game/{id_partie}/coordonees',
     function (Request $req, Response $resp, $args){
         return (new LieuxController($this))->getCoordonees($req, $resp, $args);
@@ -106,29 +109,34 @@ $app->get('/lieux',
     return (new LieuxController($this))->getIndices($req, $resp, $args);
   })->setName('indices');
 
+  //obtenir un chemin
   $app->get('/game/{id_partie}/chemin',
   function  (Request $req, Response $resp, $args){
     return (new LieuxController($this))->getChemin($req, $resp, $args);
   })->setName('chemin')
     ->add('checkToken');
 
+//obtenir la destination finale d'un chemin/d'une partie
   $app->get('/game/{id_partie}/destination',
   function  (Request $req, Response $resp, $args){
     return (new LieuxController($this))->getDestByChemin($req, $resp, $args);
   })->setName('destinationByChemin')
     ->add('checkToken');
 
+// Obtenir tous les indices pour une destination finale indices/{id_partie}/indices?token=
 $app->get('/game/{id_partie}/indices',
     function  (Request $req, Response $resp, $args){
         return (new LieuxController($this))->getDestIndicesByChemin($req, $resp, $args);
     })->setName('destinationIndicesByChemin')
     ->add('checkToken');
 
+//retourner tous les utilisateurs
 $app->get('/utilisateurs',
     function (Request $req, Response $resp, $args){
         return (new UtilisateurController($this))->getUrilisateurs($req, $resp, $args);
     })->setName('getUtilisateurs');
 
+//retourne un utilisateur
 $app->get('/utilisateurs/{id}',
     function (Request $req, Response $resp, $args){
         return (new UtilisateurController($this))->getUrilisateurById($req, $resp, $args);
@@ -146,10 +154,11 @@ $app->get('/utilisateurs/{id}',
       return (new UtilisateurController($this))->renderFormAjoutUtilisateur($req, $resp, $args);
     })->setName('renderFormAjoutUtilisateur');
 
-      $app->get('/authentification',
+    //authentification d'un user
+      /*$app->get('/authentification',
       function (Request $req, Response $resp, $args){
         return (new UtilisateurController($this))->checkUser($req, $resp, $args);
-      })->setName('checkUser');
+      })->setName('checkUser');*/
 
 
 //Obtenir les 5 lieux d'une partie /game/{id_partie}/lieux_partie?token={}
@@ -159,7 +168,7 @@ $app->get('/utilisateurs/{id}',
   })->setName('lieux_partie')
     ->add('checkToken');
 
-//Obtenir la marge d’erreur possible entre le clic et les coordonnées d’une DF /game/{id_partie}/distanceDF?token={}
+//Obtenir la marge d’erreur possible entre le clic et les coordonnées d’une DF /game/{id_partie}/distanceDF?token=
     $app->get('/game/{id_partie}/distanceDF',
     function (Request $req, Response $resp, $args){
       return (new LieuxController($this))->getDistanceDF($req, $resp, $args);

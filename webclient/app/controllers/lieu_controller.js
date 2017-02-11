@@ -11,8 +11,10 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $rootScope.destFinal3=true;
         $rootScope.destFinal4=true;
         $rootScope.destFinal5=true;
+        $scope.fini=true;
 
         $scope.regle=false;
+        $scope.button=true;
         $scope.regle1=false;
         $scope.regle2=true;
         $scope.regle3=true;
@@ -23,8 +25,10 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.disBack=true;
         $scope.reglesIndications=true;
         $scope.indicationsRegles=true;
+        $scope.indicationsRegles2=true;
         $rootScope.gameOver=true;
         $rootScope.trouver=true;
+        $rootScope.carte=false;
 
         $scope.counter = 90;
         $scope.ritme=1000;
@@ -43,8 +47,10 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $scope.lieux();
                 $rootScope.in1=false;
                 $scope.regle=true;
+                $scope.button=false;
                 $scope.reglesIndications=true;
                 $scope.indicationsRegles=false;
+                $scope.indicationsRegles2=false;
                 $scope.countdown();
             }, function (error) {
                 console.log('error');
@@ -54,10 +60,22 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.countdown = function() {
             stopped = $timeout(function() {
                 $scope.counter--;
-                if($scope.counter===0){
+                if($rootScope.acierto_dest_finale===true){
+                    $rootScope.trouver=true;
+                    $scope.fini=false;
+                    $scope.indicationsRegles2=true;
+                }else if($scope.counter===0){
                     $scope.stop();
                     $rootScope.gameOver=false;
                     $scope.indicationsRegles=true;
+                    $scope.indicationsRegles2=true;
+                    $rootScope.carte=true;
+                }else if( $rootScope.cont_click_dest_final===5){
+                    $scope.stop();
+                    $rootScope.gameOver=false;
+                    $scope.indicationsRegles=true;
+                    $scope.indicationsRegles2=true;
+                    $rootScope.carte=true;
                 }else{
                     $scope.countdown();
                 }
@@ -202,8 +220,10 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $rootScope.destFinal3=true;
                 $rootScope.destFinal4=true;
                 $rootScope.destFinal5=true;
+                $scope.fini=true;
 
                 $scope.regle=false;
+                $scope.button=true;
                 $scope.regle1=false;
                 $scope.regle2=true;
                 $scope.regle3=true;
@@ -214,8 +234,11 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $scope.disBack=true;
                 $scope.reglesIndications=true;
                 $scope.indicationsRegles=true;
+                $scope.indicationsRegles2=true;
                 $rootScope.gameOver=true;
                 $rootScope.trouver=true;
+                $rootScope.carte=false;
+                $rootScope.score=0;
                 $scope.counter = 90;
                 $scope.ritme=1000;
                 $scope.newGame();

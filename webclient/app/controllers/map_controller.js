@@ -21,7 +21,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
         cont_click=0;
         $scope.score=0;
         $rootScope.cont_click_dest_final=0;
-        $rootScope.acierto_dest_finale=true;
+        $rootScope.acierto_dest_finale=false;
         $scope.cont=2;
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -100,7 +100,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
             }else if(distancef >= 8*$rootScope.partie.distanceDF && distancef <= 10*$rootScope.partie.distanceDF){
                 $rootScope.score=1;
             }
-            $rootScope.acierto_dest_finale=false;
+            $rootScope.acierto_dest_finale=true;
         }else if(flightPlanCoordinates.length == 5){
             $rootScope.cont_click_dest_final= $rootScope.cont_click_dest_final+1;
             console.log($rootScope.cont_click_dest_final);
@@ -109,7 +109,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
             var lieu = new google.maps.LatLng($rootScope.coordonees[cont_lieu]);
             var distance = google.maps.geometry.spherical.computeDistanceBetween(lieu, latLng);
         }
-        if(flightPlanCoordinates.length <= 5) {
+        if(flightPlanCoordinates.length <= 5 && $rootScope.carte===false) {
             $rootScope.acierto=false;
             if (distance <= 10*$rootScope.partie.distanceDF || distancef <= 10*$rootScope.partie.distanceDF) {
                 cont_lieu = cont_lieu + 1;

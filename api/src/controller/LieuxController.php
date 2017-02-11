@@ -23,6 +23,7 @@ class LieuxController extends AbstractController
         $this->container = $var;
     }
 
+    //creer d'une partie
     public function newGame(Request $request, Response $response, $args){
     $game = new Partie;
 
@@ -75,6 +76,7 @@ class LieuxController extends AbstractController
     }
 
 
+    //obtenir la collection de lieux
     public function getLieux(Request $request, Response $response, $args)
     {
         try {
@@ -98,6 +100,8 @@ class LieuxController extends AbstractController
         return $response;
     }
 
+
+    //retourne toutes les destinations finales possibles
     public function getDestFinale(Request $request, Response $response, $args){
       try {
           $response = $response->withStatus(200)->withHeader('Content-type', 'application/json');
@@ -151,6 +155,7 @@ class LieuxController extends AbstractController
       return $response;
     }
 
+
     //Obtenir les coordonees de chaque lieu pour une partie /game/id_partie/coordonees?token={}
     public function getCoordonees(Request $request, Response $response, $args){
         try {
@@ -179,6 +184,7 @@ class LieuxController extends AbstractController
         return $response;
     }
 
+
     // Obtenir tous les indices pour une destination finale indices/id
 /*    public function getIndices(Request $request, Response $response, $args){
       $response = $response->withStatus(200)->withHeader('Content-type', 'application/json');
@@ -198,6 +204,7 @@ class LieuxController extends AbstractController
     }*/
 
 
+    //obtenir un lieu avec son id
     public function getLieuById(Request $request, Response $response, $args){
       try{
         $lieu = Lieu::select()->where('id', '=', $args['id'])->firstOrFail();
@@ -210,6 +217,8 @@ class LieuxController extends AbstractController
       return $response;
     }
 
+
+    //obtenir un chemin
     public function getChemin(Request $request, Response $response, $args){
       try{
         $partie = Partie::select()->where('id', '=', $args['id_partie'])->firstOrFail();
@@ -224,6 +233,8 @@ class LieuxController extends AbstractController
     }
 
 
+
+//obtenir la destination finale d'un chemin/d'une partie
     public function getDestByChemin(Request $request, Response $response, $args){
       try{
         $partie = Partie::select()->where('id', '=', $args['id_partie'])->firstOrFail();
@@ -284,7 +295,7 @@ class LieuxController extends AbstractController
     }
 
 
-    //Obtenir la marge d’erreur possible entre le clic et les coordonnées d’une DF /game/{id_partie}/distanceDF?token={}
+    //Obtenir la marge d’erreur possible entre le clic et les coordonnées d’une DF /game/{id_partie}/distanceDF?token=
     public function getDistanceDF(Request $request, Response $response, $args){
       try{
         $partie = Partie::select('distanceDF')->where('id', '=', $args['id_partie'])->firstOrFail();
