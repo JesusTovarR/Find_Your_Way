@@ -30,7 +30,7 @@ class PrivateController extends AbstractController
            $lieu->lng = filter_var($request->getParsedBody()['lng'], FILTER_SANITIZE_NUMBER_FLOAT);
            $lieu->indication = filter_var($request->getParsedBody()['indication'], FILTER_SANITIZE_STRING);
            $lieu->description = filter_var($request->getParsedBody()['description'], FILTER_SANITIZE_STRING);
-           $lieu->dest_finale = 0;
+           $lieu->dest_finale = filter_var($request->getParsedBody()['dest_finale'], FILTER_SANITIZE_STRING);
            $lieu->save();
            $response = $this->json_success($response, 201, $lieu->toJson());
       }else{
