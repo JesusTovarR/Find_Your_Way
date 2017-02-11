@@ -28,7 +28,7 @@
             <div class="text-center">
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="regles()">Regles du jeu</button>
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="newGame()">Demarrer</button>
-                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="initMap()">Redemarrer</button>
+                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()">Redemarrer</button>
                 <div class=" btn btn-primary complete">Score : {{score}}</div>
             </div>
         </nav>
@@ -89,6 +89,9 @@
         </div>
         <div class="lieux" ng-hide="indicationsRegles">
             <h3>Indications</h3>
+            <div class="indication-block ind2" ng-hide="trouver">
+                <h5>Bien! Il reste trouver la destination finale</h5>
+            </div>
             <div class="indication-block ind2" ng-hide="in5">
                 <h5>{{indication.Lieu5.indic}}</h5>
             </div>

@@ -23,10 +23,11 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.disBack=true;
         $scope.reglesIndications=true;
         $scope.indicationsRegles=true;
-        $scope.gameOver=true;
-        $rootScope.redemarrer=false;
+        $rootScope.gameOver=true;
+        $rootScope.trouver=true;
 
         $scope.counter = 90;
+        $scope.ritme=1000;
         var stopped;
 
 
@@ -56,12 +57,12 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $scope.counter--;
                 if($scope.counter===0){
                     $scope.stop();
-                    $scope.gameOver=false;
+                    $rootScope.gameOver=false;
                     $scope.indicationsRegles=true;
                 }else{
                     $scope.countdown();
                 }
-            }, 1000);
+            }, $scope.ritme);
         };
 
         $scope.stop = function(){
@@ -182,44 +183,43 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
             }
         };
 
-        $scope.$watch($rootScope.redemarrer,function(newValue) {
+        $rootScope.again = function (){
 
-            if (newValue===false) {
-                return;
-            }
-            $rootScope.partie=null;
-            $scope.indication=null;
-            $rootScope.coordonees=null;
-            $scope.indicesData=null;
-            $scope.cheminData=null;
-            $rootScope.destinationFinal=null;
-            $scope.lieu=null;
-            $rootScope.in1=true;
-            $rootScope.in2=true;
-            $rootScope.in3=true;
-            $rootScope.in4=true;
-            $rootScope.in5=true;
-            $rootScope.destFinal1=true;
-            $rootScope.destFinal2=true;
-            $rootScope.destFinal3=true;
-            $rootScope.destFinal4=true;
-            $rootScope.destFinal5=true;
+                $scope.stop();
+                $rootScope.partie=null;
+                $scope.indication=null;
+                $rootScope.coordonees=null;
+                $scope.indicesData=null;
+                $scope.cheminData=null;
+                $rootScope.destinationFinal=null;
+                $scope.lieu=null;
+                $rootScope.in1=true;
+                $rootScope.in2=true;
+                $rootScope.in3=true;
+                $rootScope.in4=true;
+                $rootScope.in5=true;
+                $rootScope.destFinal1=true;
+                $rootScope.destFinal2=true;
+                $rootScope.destFinal3=true;
+                $rootScope.destFinal4=true;
+                $rootScope.destFinal5=true;
 
-            $scope.regle=false;
-            $scope.regle1=false;
-            $scope.regle2=true;
-            $scope.regle3=true;
-            $scope.regle4=true;
-            $scope.regle5=true;
-            $scope.regle6=true;
-            $scope.disNext=false;
-            $scope.disBack=true;
-            $scope.reglesIndications=true;
-            $scope.indicationsRegles=true;
-            $scope.gameOver=true;
-            $scope.counter = 90;
-            $rootScope.redemarrer=false;
-
-        });
+                $scope.regle=false;
+                $scope.regle1=false;
+                $scope.regle2=true;
+                $scope.regle3=true;
+                $scope.regle4=true;
+                $scope.regle5=true;
+                $scope.regle6=true;
+                $scope.disNext=false;
+                $scope.disBack=true;
+                $scope.reglesIndications=true;
+                $scope.indicationsRegles=true;
+                $rootScope.gameOver=true;
+                $rootScope.trouver=true;
+                $scope.counter = 90;
+                $scope.ritme=1000;
+                $scope.newGame();
+        };
     }
 ]);

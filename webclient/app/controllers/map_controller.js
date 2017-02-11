@@ -10,8 +10,12 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
     var cont_lieu = 0;
     var cont_click=0;
 
+    $scope.redemarrer=function () {
+        $rootScope.again();
+        $scope.initMap();
+    }
+
     $scope.initMap = function () {
-        $rootScope.redemarrer=true;
         flightPlanCoordinates = [];
         cont_lieu = 0;
         cont_click=0;
@@ -96,7 +100,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
             }else if(distancef >= 8*$rootScope.partie.distanceDF && distancef <= 10*$rootScope.partie.distanceDF){
                 $rootScope.score=1;
             }
-            $rootScope.acierto_dest_finale=true;
+            $rootScope.acierto_dest_finale=false;
         }else if(flightPlanCoordinates.length == 5){
             $rootScope.cont_click_dest_final= $rootScope.cont_click_dest_final+1;
         }
@@ -256,6 +260,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
                 $rootScope.in3=true;
                 $rootScope.in4=true;
                 $rootScope.in5=true;
+                $rootScope.trouver=false;
                // $rootScope.destFinal5=true;
                 if($rootScope.cont_click===true){
                     $rootScope.destFinal5=false;
