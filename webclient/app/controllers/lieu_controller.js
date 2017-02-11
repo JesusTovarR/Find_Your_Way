@@ -42,7 +42,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
             LieuFactory.newPartie().then(function (response) {
                 $rootScope.partie = response.data;
                 $scope.indications();
-                $scope.coordonees();
+                $scope.coordonee();
                 $scope.chemin();
                 $scope.indices();
                 $scope.destinationFinal();
@@ -110,8 +110,8 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
             });
         };
 
-        $scope.coordonees = function (){
-            LieuFactory.coordonees($scope.partie.id, $scope.partie.token).then(function (response){
+        $scope.coordonee = function (){
+            LieuFactory.coordonee($scope.partie.id, $scope.partie.token).then(function (response){
 
                 $rootScope.coordonees=response.data;
                 console.log($rootScope.coordonees);

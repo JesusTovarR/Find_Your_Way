@@ -22,7 +22,7 @@ angular.module('app').factory('LieuFactory', [ '$http', function ($http) {
         lieux:function (id, token) {
             return $http.get('http://backend.findyourway.local/game/'+id+'/lieux_partie?token='+token);
         },
-        coordonees:function (id, token) {
+        coordonee:function (id, token) {
             return $http.get('http://backend.findyourway.local/game/'+id+'/coordonees?token='+token);
 
         }
