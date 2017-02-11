@@ -251,6 +251,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $rootScope.trouver=true;
                 $rootScope.carte=false;
                 $rootScope.score=0;
+                $scope.nextLevel="Redemarrer";
             if($rootScope.niveau===1){
                 $scope.counter = 90;
             }else if($rootScope.niveau===2){
