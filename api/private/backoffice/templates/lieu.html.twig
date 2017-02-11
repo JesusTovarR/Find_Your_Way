@@ -1,28 +1,111 @@
 <!DOCTYPE html>
-<head> <title>Modifier: {{lieu.nom_lieu}}</title> </head>
+<head>
+  <title>Modifier: {{lieu.nom_lieu}}</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+</head>
+
 <body>
-<h2>{{lieu.nom_lieu}}</h2>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Admin Find Your Way</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Modifier Lieu</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+<h2 class="page-header">{{lieu.nom_lieu}}</h2>
 <!--TODO: ajouter des informations sur les champs pour l'utilisateur-->
-<form method = "post" action="http://admin.findyourway.local/admin/lieu/{{lieu.id}}/modifier">
-Nom du lieu:* <input type="text" name="nom_lieu" value="{{lieu.nom_lieu}}"><br>
-latitude:* <input type="text" name="coord_x" value="{{lieu.coord_x}}"><br>
-longitude:* <input type="text" name="coord_y" value="{{lieu.coord_y}}"><br>
-indication:* <input type="text" name="indication" value="{{lieu.indication}}"><br>
-description: <input type="text" name="description" value="{{lieu.description}}"><br>
-image: <input type="text" name="image" value="{{lieu.image}}"><br>
-indice n°1: <input type="text" name="indice1" value="{{lieu.indice1}}"><br>
-indice n°2: <input type="text" name="indice2" value="{{lieu.indice2}}"><br>
-indice n°3: <input type="text" name="indice3" value="{{lieu.indice3}}"><br>
-indice n°4: <input type="text" name="indice4" value="{{lieu.indice4}}"><br>
-indice n°5: <input type="text" name="indice5" value="{{lieu.indice5}}"><br>
-<input type="submit" value="Submit">
-</form>
+  <div class="jumbotron">
+    <form class="form-horizontal container" method = "post" action="http://admin.findyourway.local/admin/lieu/{{lieu.id}}/modifier">
+      <div class="form-group">
+        <label class="col-lg-2" for="nom_lieu"> Nombre:* </label>
+        <div>
+          <input class="form-control" type="text" name="nom_lieu" id="nom_lieu" value="{{lieu.nom_lieu}}">
+        </div>
+      </div>
 
-<form method="post" action = "http://admin.findyourway.local/admin/lieu/{{lieu.id}}/supprimerlieu">
-  <input type="hidden" name="_method" value="DELETE" />
-  <input type="submit" name="_method" value="supprimer" />
-</form>
+      <div class="form-group">
+        <label class="col-lg-2" for="indication"> Indication:* </label>
+        <div>
+          <input class="form-control" class="form-control" type="text" name="indication" id="indication" value="{{lieu.indication}}">
+        </div>
+      </div>
 
+      <div class="form-group">
+        <label class="col-lg-2" for="description"> Description: </label>
+        <div>
+          <input class="form-control" type="text" name="description" id="description" value="{{lieu.description}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2" for="Image"> Image: </label>
+        <div>
+          <input class="form-control" type="text" name="image" id="Image" value="{{lieu.image}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2" for="indice1"> Indice1:* </label>
+        <div>
+          <input class="form-control" type="text" name="indice1" id="indice1" value="{{lieu.indice1}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2" for="indice2"> Indice2:* </label>
+        <div>
+          <input class="form-control" type="text" name="indice2" id="indice2" value="{{lieu.indice2}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2" for="indice3"> Indice3:* </label>
+        <div>
+          <input class="form-control" type="text" name="indice3" id="indice3" value="{{lieu.indice3}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2" for="indice4"> Indice4:* </label>
+        <div>
+          <input class="form-control" type="text" name="indice4" id="indice4" value="{{lieu.indice4}}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2" for="indice5"> Indice5:* </label>
+        <input class="form-control" type="text" name="indice5" id="indice5" value="{{lieu.indice5}}">
+      </div>
+
+      <div class="form-group">
+        <label for="dest_final"> Ajouter en tant que destination finale:* </label>
+        <div>
+          <select class="form-control" name="dest_finale" id="dest_finale">
+            <option value="{{0}}" selected>No</option>
+            <option value="{{1}}">oui</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  </div>
+
+<div class="container">
+  <form method="post" action = "http://admin.findyourway.local/admin/lieu/{{lieu.id}}/supprimerlieu">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input class="btn btn-danger col-lg-12" type="submit" name="_method" value="supprimer" />
+  </form>
+</div>
 Les champs marqués d'un (*) sont obligatoires.
 </body>
 </html>
