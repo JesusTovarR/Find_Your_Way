@@ -28,8 +28,8 @@
             <div class="text-center">
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="regles()">Regles du jeu</button>
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="newGame()">Demarrer</button>
-                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()">Redemarrer</button>
-                <div class=" btn btn-primary complete">Score : {{score}}</div>
+                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()" ng-hide="button">Redemarrer</button>
+                <div class=" btn btn-primary complete" ng-hide="button">Score : {{score}}</div>
             </div>
         </nav>
         <div class="gameOver" ng-hide="gameOver">
@@ -89,6 +89,10 @@
         </div>
         <div class="lieux" ng-hide="indicationsRegles">
             <h3>Indications</h3>
+            <div class="indication-block ind2" ng-hide="fini">
+                <h5>Bien! Felicitations, vous avez trouve la destination final.</h5>
+                <img src="img/felisitation.jpg"/>
+            </div>
             <div class="indication-block ind2" ng-hide="trouver">
                 <h5>Bien! Il reste trouver la destination finale</h5>
             </div>
@@ -108,7 +112,7 @@
                 <h5>{{indication.Lieu1.indic}}</h5>
             </div>
         </div>
-        <div class="destFinal " ng-hide="indicationsRegles">
+        <div class="destFinal " ng-hide="indicationsRegles2">
             <hr/>
             <h3>Indices recoltes</h3>
             <div class="indication-block ind2" ng-hide="destFinal1">
