@@ -8,9 +8,9 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
     var myLatLng = {lat: 48.856577777778, lng: 2.3518277777778};
     var flightPlanCoordinates = [];
     var cont_lieu = 0;
-    var cont_click=0;
+    var cont_click = 0;
 
-    $scope.redemarrer=function () {
+    $scope.redemarrer = function () {
         $rootScope.again();
         $scope.initMap();
     }
@@ -18,11 +18,11 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
     $scope.initMap = function () {
         flightPlanCoordinates = [];
         cont_lieu = 0;
-        cont_click=0;
-        $scope.score=0;
-        $rootScope.cont_click_dest_final=0;
-        $rootScope.acierto_dest_finale=false;
-        $scope.cont=2;
+        cont_click = 0;
+        $scope.score = 0;
+        $rootScope.cont_click_dest_final = 0;
+        $rootScope.acierto_dest_finale = false;
+        $scope.cont = 2;
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: myLatLng,
@@ -47,14 +47,14 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
          */
 
         map.addListener('click', function (e) {
-            cont_click=cont_click+1;
-            if(cont_click >= 3){
+            cont_click = cont_click + 1;
+            if (cont_click >= 3) {
                 //si da mas de dos clicks entonces la variable se vuelve false
                 $rootScope.cont_click = false;
-            }else{
+            } else {
                 $rootScope.cont_click = true;
             }
-            $scope.$apply(function(){
+            $scope.$apply(function () {
                 $scope.placeMarkerAndPanTo(e.latLng, map);
             });
         });
@@ -80,34 +80,34 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
          ));
          }
          */
-        var lieuf = new google.maps.LatLng(parseFloat($rootScope.destinationFinal.lat),parseFloat($rootScope.destinationFinal.lng));
+        var lieuf = new google.maps.LatLng(parseFloat($rootScope.destinationFinal.lat), parseFloat($rootScope.destinationFinal.lng));
         var distancef = google.maps.geometry.spherical.computeDistanceBetween(lieuf, latLng);
 
-        if(flightPlanCoordinates.length == 5 && distancef <= 10*$rootScope.partie.distanceDF){
+        if (flightPlanCoordinates.length == 5 && distancef <= 10 * $rootScope.partie.distanceDF) {
 
-            if(distancef >= 0 && distancef <= 2*$rootScope.partie.distanceDF){
-                $rootScope.score=10;
-            }else if(distancef >= 2*$rootScope.partie.distanceDF && distancef <= 4*$rootScope.partie.distanceDF){
-                $rootScope.score=8;
-            }else if(distancef >= 4*$rootScope.partie.distanceDF && distancef <= 6*$rootScope.partie.distanceDF){
-                $rootScope.score=6;
-            }else if(distancef >= 6*$rootScope.partie.distanceDF && distancef <= 8*$rootScope.partie.distanceDF){
-                $rootScope.score=3;
-            }else if(distancef >= 8*$rootScope.partie.distanceDF && distancef <= 10*$rootScope.partie.distanceDF){
-                $rootScope.score=1;
+            if (distancef >= 0 && distancef <= 2 * $rootScope.partie.distanceDF) {
+                $rootScope.score = 10;
+            } else if (distancef >= 2 * $rootScope.partie.distanceDF && distancef <= 4 * $rootScope.partie.distanceDF) {
+                $rootScope.score = 8;
+            } else if (distancef >= 4 * $rootScope.partie.distanceDF && distancef <= 6 * $rootScope.partie.distanceDF) {
+                $rootScope.score = 6;
+            } else if (distancef >= 6 * $rootScope.partie.distanceDF && distancef <= 8 * $rootScope.partie.distanceDF) {
+                $rootScope.score = 3;
+            } else if (distancef >= 8 * $rootScope.partie.distanceDF && distancef <= 10 * $rootScope.partie.distanceDF) {
+                $rootScope.score = 1;
             }
-            $rootScope.acierto_dest_finale=true;
-        }else if(flightPlanCoordinates.length == 5){
-            $rootScope.cont_click_dest_final= $rootScope.cont_click_dest_final+1;
+            $rootScope.acierto_dest_finale = true;
+        } else if (flightPlanCoordinates.length == 5) {
+            $rootScope.cont_click_dest_final = $rootScope.cont_click_dest_final + 1;
             console.log($rootScope.cont_click_dest_final);
         }
-        else if(flightPlanCoordinates.length < 5) {
+        else if (flightPlanCoordinates.length < 5) {
             var lieu = new google.maps.LatLng($rootScope.coordonees[cont_lieu]);
             var distance = google.maps.geometry.spherical.computeDistanceBetween(lieu, latLng);
         }
-        if(flightPlanCoordinates.length <= 5 && $rootScope.carte===false) {
-            $rootScope.acierto=false;
-            if (distance <= 10*$rootScope.partie.distanceDF || distancef <= 10*$rootScope.partie.distanceDF) {
+        if (flightPlanCoordinates.length <= 5 && $rootScope.carte === false) {
+            $rootScope.acierto = false;
+            if (distance <= 10 * $rootScope.partie.distanceDF || distancef <= 10 * $rootScope.partie.distanceDF) {
                 cont_lieu = cont_lieu + 1;
                 //console.log($rootScope.coordonees[cont_lieu]);
 
@@ -122,17 +122,16 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
                     map: map
                 });
 
-                if(flightPlanCoordinates.length == 5){
+                if (flightPlanCoordinates.length == 5) {
                     marker.setIcon('../../img/male-2.png');
                 }
 
-                if(flightPlanCoordinates.length == 0){
+                if (flightPlanCoordinates.length == 0) {
                     marker.setIcon();
                 }
-                if(flightPlanCoordinates.length != 0){
+                if (flightPlanCoordinates.length != 0) {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                 }
-
 
 
                 var infowindow = new google.maps.InfoWindow({
@@ -147,7 +146,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
                 //cuando acierta la variable se vuelve true
                 $rootScope.acierto = true;
                 $scope.cambio($rootScope.acierto);
-            }else{
+            } else {
                 alert("Désolé, Réessaie!");
                 $scope.cambio($rootScope.acierto);
             }
@@ -168,7 +167,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
             });
 
 
-            if(flightPlanCoordinates.length == 6){
+            if (flightPlanCoordinates.length == 6) {
                 var flightPath = new google.maps.Polyline({
                     path: flightPlanCoordinates,
                     icons: [{
@@ -181,10 +180,10 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
                     strokeWeight: 2
                 });
 
-                $scope.cont2=$scope.cont;
-                $scope.cont=$scope.cont+1;
+                $scope.cont2 = $scope.cont;
+                $scope.cont = $scope.cont + 1;
                 var count = 0;
-                $scope.id = window.setInterval(function() {
+                $scope.id = window.setInterval(function () {
                     count = (count + 1) % 200;
                     var icons = flightPath.get('icons');
                     icons[0].offset = (count / 2) + '%';
@@ -200,73 +199,72 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
     };
 
 
-
-    $scope.cambio=function(newValue) {
-        if(newValue===true){
-            if($rootScope.in1===false){
-                $rootScope.in1=true;
-                $rootScope.in2=false;
-                $rootScope.in3=true;
-                $rootScope.in4=true;
-                $rootScope.in5=true;
-               // $rootScope.destFinal1=true;
-                if($rootScope.cont_click===true){
-                    $rootScope.destFinal1=false;
-                }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal1=true;
+    $scope.cambio = function (newValue) {
+        if (newValue === true) {
+            if ($rootScope.in1 === false) {
+                $rootScope.in1 = true;
+                $rootScope.in2 = false;
+                $rootScope.in3 = true;
+                $rootScope.in4 = true;
+                $rootScope.in5 = true;
+                // $rootScope.destFinal1=true;
+                if ($rootScope.cont_click === true) {
+                    $rootScope.destFinal1 = false;
+                } else if ($rootScope.cont_click === false) {
+                    $rootScope.destFinal1 = true;
                 }
-            }else if($rootScope.in2===false){
-                $rootScope.in1=true;
-                $rootScope.in2=true;
-                $rootScope.in3=false;
-                $rootScope.in4=true;
-                $rootScope.in5=true;
-              //  $rootScope.destFinal2=true;
-                if($rootScope.cont_click===true){
-                    $rootScope.destFinal2=false;
-                }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal2=true;
+            } else if ($rootScope.in2 === false) {
+                $rootScope.in1 = true;
+                $rootScope.in2 = true;
+                $rootScope.in3 = false;
+                $rootScope.in4 = true;
+                $rootScope.in5 = true;
+                //  $rootScope.destFinal2=true;
+                if ($rootScope.cont_click === true) {
+                    $rootScope.destFinal2 = false;
+                } else if ($rootScope.cont_click === false) {
+                    $rootScope.destFinal2 = true;
                 }
-            }else if($rootScope.in3===false){
-                $rootScope.in1=true;
-                $rootScope.in2=true;
-                $rootScope.in3=true;
-                $rootScope.in4=false;
-                $rootScope.in5=true;
-              //  $rootScope.destFinal3=true;
-                if($rootScope.cont_click===true){
-                    $rootScope.destFinal3=false;
-                }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal3=true;
+            } else if ($rootScope.in3 === false) {
+                $rootScope.in1 = true;
+                $rootScope.in2 = true;
+                $rootScope.in3 = true;
+                $rootScope.in4 = false;
+                $rootScope.in5 = true;
+                //  $rootScope.destFinal3=true;
+                if ($rootScope.cont_click === true) {
+                    $rootScope.destFinal3 = false;
+                } else if ($rootScope.cont_click === false) {
+                    $rootScope.destFinal3 = true;
                 }
-            }else if($rootScope.in4===false){
-                $rootScope.in1=true;
-                $rootScope.in2=true;
-                $rootScope.in3=true;
-                $rootScope.in4=true;
-                $rootScope.in5=false;
-               // $rootScope.destFinal4=true;
-                if($rootScope.cont_click===true){
-                    $rootScope.destFinal4=false;
-                }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal4=true;
+            } else if ($rootScope.in4 === false) {
+                $rootScope.in1 = true;
+                $rootScope.in2 = true;
+                $rootScope.in3 = true;
+                $rootScope.in4 = true;
+                $rootScope.in5 = false;
+                // $rootScope.destFinal4=true;
+                if ($rootScope.cont_click === true) {
+                    $rootScope.destFinal4 = false;
+                } else if ($rootScope.cont_click === false) {
+                    $rootScope.destFinal4 = true;
                 }
-            }else if($rootScope.in5===false){
-                $rootScope.in1=true;
-                $rootScope.in2=true;
-                $rootScope.in3=true;
-                $rootScope.in4=true;
-                $rootScope.in5=true;
-                $rootScope.trouver=false;
-               // $rootScope.destFinal5=true;
-                if($rootScope.cont_click===true){
-                    $rootScope.destFinal5=false;
-                }else if($rootScope.cont_click===false){
-                    $rootScope.destFinal5=true;
+            } else if ($rootScope.in5 === false) {
+                $rootScope.in1 = true;
+                $rootScope.in2 = true;
+                $rootScope.in3 = true;
+                $rootScope.in4 = true;
+                $rootScope.in5 = true;
+                $rootScope.trouver = false;
+                // $rootScope.destFinal5=true;
+                if ($rootScope.cont_click === true) {
+                    $rootScope.destFinal5 = false;
+                } else if ($rootScope.cont_click === false) {
+                    $rootScope.destFinal5 = true;
                 }
             }
-            cont_click=0;
-        }else{
+            cont_click = 0;
+        } else {
             return;
         }
     };

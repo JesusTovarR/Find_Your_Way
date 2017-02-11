@@ -29,7 +29,9 @@
             <div class="text-center">
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="regles()">Regles du jeu</button>
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="newGame()">Demarrer</button>
-                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()" ng-hide="button">{{nextLevel}}</button>
+                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()"
+                        ng-hide="button">{{nextLevel}}
+                </button>
                 <div class=" btn btn-primary complete" ng-hide="button">Score : {{score}}</div>
             </div>
         </nav>
@@ -84,7 +86,8 @@
                 </p>
             </div>
             <button class=" btn btn-primary" ng-click="back()" ng-disabled="disBack"><img src="img/back.png"/></button>
-            <button class=" btn btn-primary next" ng-click="next()" ng-disabled="disNext"><img src="img/next.png"/></button>
+            <button class=" btn btn-primary next" ng-click="next()" ng-disabled="disNext"><img src="img/next.png"/>
+            </button>
         </div>
 
         <div class="lieux" ng-hide="indicationsRegles">

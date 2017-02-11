@@ -2,9 +2,9 @@
  * Created by Jesus Tovar on 07/02/2017.
  */
 angular.module('app').service('Lieu', ['$http',
-    function($http){
+    function ($http) {
 
-        var Lieu = function(data){
+        var Lieu = function (data) {
             this.id = data.id;
             this.coord_x = data.coord_x;
             this.coord_y = data.coord_y;
