@@ -8,10 +8,11 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Admin Find Your Way</a>
+      <a class="navbar-brand" href="http://admin.findyourway.local/admin/formAjoutLieu">Admin Find Your Way</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Modifier Lieu</a></li>
+      <li class="active"><a href="http://admin.findyourway.local/admin/lieux">Liste des Lieux</a></li>
+      <li class="active"><a href="http://admin.findyourway.local/admin/formAjoutLieu">Cree un Lieu</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -21,7 +22,7 @@
 </nav>
 
 <div class="container">
-<h2 class="page-header">{{lieu.nom_lieu}}</h2>
+<h2 class="page-header">Nom de la ville: {{lieu.nom_lieu}}</h2>
 <!--TODO: ajouter des informations sur les champs pour l'utilisateur-->
   <div class="jumbotron">
     <form class="form-horizontal container" method = "post" action="http://admin.findyourway.local/admin/lieu/{{lieu.id}}/modifier">

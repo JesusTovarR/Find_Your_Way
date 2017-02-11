@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<head> <title>Oh le beau Template</title> </head>
+<head>
+  <title>Oh le beau Template</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+</head>
 <body>
-<ul>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="http://admin.findyourway.local/admin/formAjoutLieu">Admin Find Your Way</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="http://admin.findyourway.local/admin/formAjoutLieu">Cree un Lieu</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="page-header">Liste de lieux pouvant etre modifie <small>(cliquer dessus)</small></h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Liste de lieux</th>
+  </tr>
+  </thead>
 
 {% for it in tabLieux %}
-  <p><a href='http://admin.findyourway.local/admin/formlieu/{{it.id}}'>{{it.nom_lieu}}</a></p>
+
+  <tbody>
+  <tr class="success">
+    <td><a href='http://admin.findyourway.local/admin/formlieu/{{it.id}}'>{{it.nom_lieu}}</a></td>
+  </tr>
+
 {% endfor %}
-</ul>
+</tbody>
+  </table>
+</div>
+
 </body>
 </html>
