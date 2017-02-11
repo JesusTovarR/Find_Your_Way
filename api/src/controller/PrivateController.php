@@ -19,6 +19,8 @@ class PrivateController extends AbstractController
         $this->container = $var;
     }
 
+
+    // ajout d'un lieu
     public function addLieu(Request $request, Response $response, $args){
       $lieu = new Lieu;
       if(isset($request->getParsedBody()['lat']) &&
@@ -40,6 +42,7 @@ class PrivateController extends AbstractController
     }
 
 
+//ajout d'un nouvel indice
     public function addIndice(Request $request, Response $response, $args){
       $lieu = Lieu::select()->where('id', '=', $args['id'])->firstOrFail();
       $indice = filter_var($request->getParsedBody()['indice'], FILTER_SANITIZE_STRING);
@@ -67,7 +70,8 @@ class PrivateController extends AbstractController
       return $response;
     }
 
-    //modification d'un indice
+
+    //modification d'un lieu
     public function modifierLieu(Request $request, Response $response, $args){
 try{
         $lieu = Lieu::select()->where('id','=',$args['id'])->firstOrFail();
@@ -126,23 +130,30 @@ try{
     return $response;
   }
 
+
+//accès a tout les lieux pour les modifier
   public function adminLieu(Request $request, Response $response, $args){
     $lieux = Lieu::select()->get();
     $tabLieux = $lieux->toArray();
    return $this->container->view->render($response, 'lieux.html.twig',  ['tabLieux' => $tabLieux]);
   }
 
+
+//formulaire modifier un lieu
   public function renderFormLieu(Request $request, Response $response, $args){
     $lieu = Lieu::select()->where('id', '=', $args['id'])->firstOrFail();
     $lieu = $lieu->toArray();
     return $this->container->view->render($response, 'lieu.html.twig',  ['lieu' => $lieu]);
   }
 
+
   // formulaire pour l'ajout d'un lieu
   public function renderFormAjoutLieu(Request $request, Response $response, $args){
     return $this->container->view->render($response, 'ajoutLieu.html.twig');
   }
 
+
+//Suppression d'une partie
   public function deleteGame(Request $request, Response $response, $args){
     try{
     Partie::destroy($args['id_partie']);

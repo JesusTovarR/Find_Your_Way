@@ -58,6 +58,7 @@ function(Request $req, Response $resp, $args){
   return (new privateController($this))->renderFormAjoutLieu($req, $resp, $args);
 })->setName('renderFormAjoutLieu');
 
+//ajout d'un nouvel indice
 $app->post('/lieu/{id}/nouvelIndice',
 function (Request $req, Response $resp, $args){
   return (new PrivateController($this))->addIndice($req, $resp, $args);
@@ -75,7 +76,7 @@ function (Request $req, Response $resp, $args){
   return (new privateController($this))->modifierLieu($req, $resp, $args);
 })->setName('modifierLieu');
 
-//supprimer un lieu
+//suppression d'un lieu
 $app->delete('/admin/lieu/{id}/supprimerlieu',
 function (Request $req, Response $resp, $args){
   return (new privateController($this))->deleteLieu($req, $resp, $args);
@@ -87,6 +88,7 @@ $app->get('/admin/lieux',
     return (new privateController($this))->adminLieu($req, $resp, $args);
   })->setName('adminLieu');
 
+//Suppression d'une partie
   $app->delete('/admin/game/{id_partie}/delete',
   function (Request $req, Response $resp, $args){
     return (new privateController($this))->deleteGame($req, $resp, $args);

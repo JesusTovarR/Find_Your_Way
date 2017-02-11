@@ -22,6 +22,8 @@ class UtilisateurController extends AbstractController
         $this->container = $var;
     }
 
+
+    //retourner tous les utilisateurs
     public function getUrilisateurs(Request $request, Response $response, $args)
     {
         try {
@@ -45,6 +47,8 @@ class UtilisateurController extends AbstractController
             return $response;
     }
 
+
+    //retourne un utilisateur
     public function getUrilisateurById(Request $request, Response $response, $args)
     {
         try {
@@ -58,6 +62,8 @@ class UtilisateurController extends AbstractController
         return $response;
     }
 
+
+      //ajout d'un nouvel utilisateur
     public function addUser(Request $request, Response $response, $args){
         try{
         $user = new Utilisateur;
@@ -80,8 +86,10 @@ class UtilisateurController extends AbstractController
     }
 
 
-//a finir
+//authentification d'un user
+/* a finir
     public function checkUser(Request $request, Response $response, $args){
       $user = select()->where('nom', '=', filter_var($request->getParsedBody()['nom'], FILTER_SANITIZE_STRING));
-    }
+    }*/
+
 }
