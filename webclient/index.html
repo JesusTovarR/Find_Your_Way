@@ -23,12 +23,13 @@
         <nav class="navbar navbar-default">
             <div class="masthead text-center">
                 <h3 class="text-muted">Find Your Way</h3>
+                <h4>Niveau: {{niveau}}</h4>
                 <h4>Secondes:</h4><h4 ng-bind="counter"></h4>
             </div>
             <div class="text-center">
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="regles()">Regles du jeu</button>
                 <button class=" btn btn-primary complete" ng-hide="regle" ng-click="newGame()">Demarrer</button>
-                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()" ng-hide="button">Redemarrer</button>
+                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="redemarrer()" ng-hide="button">{{nextLevel}}</button>
                 <div class=" btn btn-primary complete" ng-hide="button">Score : {{score}}</div>
             </div>
         </nav>

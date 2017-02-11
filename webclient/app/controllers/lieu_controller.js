@@ -13,6 +13,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $rootScope.destFinal5=true;
         $scope.fini=true;
         $rootScope.niveau=1;
+        $scope.nextLevel="Redemarrer";
 
         $scope.regle=false;
         $scope.button=true;
@@ -70,6 +71,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                     }else if($rootScope.niveau>=5){
                         $rootScope.niveau=1;
                     }
+                    $scope.nextLevel="Niveau suivant"
                 }else if($scope.counter===0){
                     $scope.stop();
                     $rootScope.gameOver=false;
@@ -77,6 +79,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                     $scope.indicationsRegles2=true;
                     $rootScope.niveau=1;
                     $rootScope.carte=true;
+                    $scope.nextLevel="Redemarrer";
                 }else if( $rootScope.cont_click_dest_final===5){
                     $scope.stop();
                     $rootScope.gameOver=false;
@@ -84,6 +87,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                     $scope.indicationsRegles2=true;
                     $rootScope.niveau=1;
                     $rootScope.carte=true;
+                    $scope.nextLevel="Redemarrer";
                 }else{
                     $scope.countdown();
                 }
