@@ -46,6 +46,14 @@ $c['view'] = function($c){
 
 $app = new Slim\App($c) ;
 
+/*
+Twig_Autoloader::register();
+$loader = new Twig_Loader_Filesystem('backoffice/templates');
+$twig = new Twig_Environment($loader); $twig->addFunction(new \Twig_SimpleFunction('asset', function ($asset) {
+// implement whatever logic you need to determine the asset path
+return sprintf('../assets/%s', ltrim($asset, '/')); }));
+*/
+
 // ajout d'un lieu
 $app->post('/admin/lieu',
 function (Request $req, Response $resp, $args){
@@ -58,6 +66,7 @@ function(Request $req, Response $resp, $args){
   return (new privateController($this))->renderFormAjoutLieu($req, $resp, $args);
 })->setName('renderFormAjoutLieu');
 
+//ajout d'un nouvel indice
 $app->post('/lieu/{id}/nouvelIndice',
 function (Request $req, Response $resp, $args){
   return (new PrivateController($this))->addIndice($req, $resp, $args);
@@ -75,7 +84,7 @@ function (Request $req, Response $resp, $args){
   return (new privateController($this))->modifierLieu($req, $resp, $args);
 })->setName('modifierLieu');
 
-//supprimer un lieu
+//suppression d'un lieu
 $app->delete('/admin/lieu/{id}/supprimerlieu',
 function (Request $req, Response $resp, $args){
   return (new privateController($this))->deleteLieu($req, $resp, $args);
@@ -87,6 +96,7 @@ $app->get('/admin/lieux',
     return (new privateController($this))->adminLieu($req, $resp, $args);
   })->setName('adminLieu');
 
+//Suppression d'une partie
   $app->delete('/admin/game/{id_partie}/delete',
   function (Request $req, Response $resp, $args){
     return (new privateController($this))->deleteGame($req, $resp, $args);

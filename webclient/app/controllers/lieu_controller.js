@@ -59,7 +59,6 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
 
         $scope.countdown = function() {
             stopped = $timeout(function() {
-                console.log($scope.counter);
                 $scope.counter--;
                 if($rootScope.acierto_dest_finale===true){
                     $rootScope.trouver=true;

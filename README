@@ -1,0 +1,14 @@
+﻿Depot git: https://github.com/JesusTovarR/Find_Your_Way
+
+Creer un dossier 'www' et cloner le depot dans ce dossier
+Deplacer le vagrantFile se trouvant dans www/Find_Your_Way/ au meme niveau que le dossier www
+Deplacer adminer.php se trouvant dans www/Find_Your_Way/ vers www/
+
+Faire vagrant up dans le dossier ou se trouve le vagrantfile
+
+Pour les librairies, faire 'composer install' dans le dossier www/Find_Your_Way/api
+
+La BD se trouve egalement dans www/Find_Your_Way/findyourway.sql.
+Il faut l'importer via l'URL http://arche-web.local/adminer.php {login: root; mdp: root}
+
+Documentation de l'api www/Find_Your_Way/documentation_api.pdf

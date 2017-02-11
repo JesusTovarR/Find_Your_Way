@@ -103,6 +103,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
             $rootScope.acierto_dest_finale=true;
         }else if(flightPlanCoordinates.length == 5){
             $rootScope.cont_click_dest_final= $rootScope.cont_click_dest_final+1;
+            console.log($rootScope.cont_click_dest_final);
         }
         else if(flightPlanCoordinates.length < 5) {
             var lieu = new google.maps.LatLng($rootScope.coordonees[cont_lieu]);

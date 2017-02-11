@@ -65,20 +65,20 @@ INSERT INTO lieu VALUES (null,'Arc du triomphe',48.8737917,2.29502750000006,
 );
 
 INSERT INTO lieu VALUES (null,'Besançon',47.237829,6.024053900000013,
-'Elle est entourée de collines et est traversée par le Doubs.',
+'Prefecture du Doubs.',
 null,
 'img/Besancon.jpg',null,null,null,null,null,0
 );
 
 INSERT INTO lieu VALUES (null,'Bordeaux',44.837789,-0.5791799999999512,
-'Cette region, à elle seule a plus de 9.000 châteaux producteurs de vin.',
+'Ville de l''Ouest qui donne son nom à un vin',
 null,
 'img/Bordeaux.jpg',
 null,null,null,null,null,0
 );
 
 INSERT INTO lieu VALUES (null,'Nantes',47.218371,-1.553621000000021,
-'À la fin de l’Empire romain, la ville est couramment appelée Portus Namnetum',
+'Surnommée la cité des Ducs de Bretagne',
 null,
 'img/Elephant_Nantes.jpg',
 null,null,null,null,null,0
@@ -95,6 +95,27 @@ INSERT INTO lieu VALUES (null,'Limoges',45.83361900000001,1.2611050000000432,
 null,
 'img/Limoges.jpg',
 null,null,null,null,null,0);
+
+INSERT INTO lieu VALUES (null,	'Marseille',	43.3,	5.4,
+'Appelée également la Citée Phocéenne',
+	NULL,
+	'',
+	'Sa basilique Notre-Dame-De-La-Garde domine la ville',
+		'Connue pour son Vieux-port',	'Ville d''origine du groupe de rap IAM',
+			'Fernandel y est né',	'Le Pastis est la boisson emblematique de la ville',
+				1);
+
+INSERT INTO lieu VALUES (null,	'Lyon',	45.764,	4.835,
+	'Ses habitants sont surnommés les Gones',
+		NULL,
+		'',
+		'Les pentes de La croix rousse, situées dans cette ville, sont classées au patrimoine mondiale de l''UNESCO',
+			'On y trouve le siège d''Interpol',
+			'La ville des lumières',
+			'Autrefois appelée Lugdunum',
+			'Ville de naissance d''Antoine de Saint-Exupery',
+			1);
+
 
 INSERT INTO chemin VALUES (null,1,2,3,4,5,6);
 
