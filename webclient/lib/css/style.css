@@ -18,7 +18,7 @@ html, body {
     margin-right: 1%;
     float: left;
     width: 58%;
-    height: 96%;
+    height: 95%;
     border-radius: 15px;
     box-shadow: 2px 2px 25px rgba(13, 13, 13, 0.49);
     border: #45b3ff;
@@ -26,14 +26,15 @@ html, body {
     min-width: 300px
 }
 
-@media (max-width: 800px) and (min-width: 300px) {
-    
+@media (max-width: 800px) and (min-width: 200px) {
     #info {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        float: left;
         height: auto;
         box-sizing: border-box;
     }
+
     #map {
         margin-top: 1%;
         margin-left: 0%;
@@ -45,7 +46,22 @@ html, body {
         border: #45b3ff;
         box-sizing: border-box;
     }
+
     .ind {
+        overflow-y: scroll;
+    }
+
+    .lieux {
+        order: 2;
+    }
+
+    #congratulations {
+        display: none;
+    }
+
+    .destFinal {
+        order: 1;
+        height: 100px;
         overflow-y: scroll;
     }
 }
@@ -90,10 +106,6 @@ p {
 }
 
 .regles {
-    height: 300px;
-}
-
-.destFinal {
     height: 300px;
 }
 
