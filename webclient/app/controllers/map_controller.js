@@ -40,10 +40,6 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
          });
          */
 
-        var infowindow = new google.maps.InfoWindow({
-            content: '<img src="img/Tour_Eiffel.jpg" alt="Tour_Eiffel" width="100" height="180"/>'
-        });
-
         /*
          marker.addListener('click', function() {
          infowindow.open(map, marker);
