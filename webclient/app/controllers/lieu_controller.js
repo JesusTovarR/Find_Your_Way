@@ -24,15 +24,15 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.reglesIndications=true;
         $scope.indicationsRegles=true;
         $scope.gameOver=true;
+        $rootScope.redemarrer=false;
 
         $scope.counter = 90;
         var stopped;
 
 
-        $scope.newGame = function () {
+        $rootScope.newGame = function () {
 
             LieuFactory.newPartie().then(function (response) {
-                $scope.error = undefined;
                 $rootScope.partie = response.data;
                 $scope.indications();
                 $scope.coordonees();
@@ -56,7 +56,8 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $scope.counter--;
                 if($scope.counter===0){
                     $scope.stop();
-                    $scope.gameOver==false;
+                    $scope.gameOver=false;
+                    $scope.indicationsRegles=true;
                 }else{
                     $scope.countdown();
                 }
@@ -71,9 +72,8 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.indications = function (){
             LieuFactory.indications($scope.partie.id, $scope.partie.token).then(function (response){
 
-                $scope.indications=response.data;
-                console.log($scope.indications);
-                return $scope.indications;
+                $scope.indication=response.data;
+                return $scope.indication;
 
             },function (error) {
                 console.log('error');
@@ -96,7 +96,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
             LieuFactory.chemin($scope.partie.id, $scope.partie.token).then(function (response){
 
                 // console.log( $scope.chemin=response.data);
-                return $scope.chemin=response.data;
+                return $scope.cheminData=response.data;
 
             },function (error) {
                 console.log('error');
@@ -106,8 +106,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.indices = function (){
             LieuFactory.indices($scope.partie.id, $scope.partie.token).then(function (response){
 
-                console.log( $scope.indices=response.data);
-                return $scope.indices=response.data;
+                return $scope.indicesData=response.data;
 
             },function (error) {
                 console.log('error');
@@ -117,7 +116,6 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.destinationFinal = function (){
             LieuFactory.destinationFinal($scope.partie.id, $scope.partie.token).then(function (response){
 
-                 console.log( $scope.destinationFinal=response.data);
                     $rootScope.destinationFinal=response.data;
 
             },function (error) {
@@ -128,8 +126,7 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
         $scope.lieux = function (){
             LieuFactory.lieux($scope.partie.id, $scope.partie.token).then(function (response){
 
-                 console.log( $scope.lieux=response.data);
-               // return $scope.lieux=response.data;
+                return $scope.lieu=response.data;
 
             },function (error) {
                 console.log('error');
@@ -184,5 +181,45 @@ angular.module('app').controller('LieuController', ['$scope', '$rootScope','$tim
                 $scope.disNext=false;
             }
         };
+
+        $scope.$watch($rootScope.redemarrer,function(newValue) {
+
+            if (newValue===false) {
+                return;
+            }
+            $rootScope.partie=null;
+            $scope.indication=null;
+            $rootScope.coordonees=null;
+            $scope.indicesData=null;
+            $scope.cheminData=null;
+            $rootScope.destinationFinal=null;
+            $scope.lieu=null;
+            $rootScope.in1=true;
+            $rootScope.in2=true;
+            $rootScope.in3=true;
+            $rootScope.in4=true;
+            $rootScope.in5=true;
+            $rootScope.destFinal1=true;
+            $rootScope.destFinal2=true;
+            $rootScope.destFinal3=true;
+            $rootScope.destFinal4=true;
+            $rootScope.destFinal5=true;
+
+            $scope.regle=false;
+            $scope.regle1=false;
+            $scope.regle2=true;
+            $scope.regle3=true;
+            $scope.regle4=true;
+            $scope.regle5=true;
+            $scope.regle6=true;
+            $scope.disNext=false;
+            $scope.disBack=true;
+            $scope.reglesIndications=true;
+            $scope.indicationsRegles=true;
+            $scope.gameOver=true;
+            $scope.counter = 90;
+            $rootScope.redemarrer=false;
+
+        });
     }
 ]);

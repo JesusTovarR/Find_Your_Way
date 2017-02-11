@@ -11,7 +11,7 @@ angular.module('app').controller('MapController', ['$scope', '$rootScope', '$htt
     var cont_click=0;
 
     $scope.initMap = function () {
-
+        $rootScope.redemarrer=true;
         flightPlanCoordinates = [];
         cont_lieu = 0;
         cont_click=0;

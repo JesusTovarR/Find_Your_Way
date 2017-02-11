@@ -55,6 +55,10 @@ p{
     padding: 10px;
 }
 
+.gameOver img{
+    width: 100%;
+}
+
 .lieux{
     height:120px;
 }

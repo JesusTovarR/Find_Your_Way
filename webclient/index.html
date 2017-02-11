@@ -32,6 +32,9 @@
                 <div class=" btn btn-primary complete">Score : {{score}}</div>
             </div>
         </nav>
+        <div class="gameOver" ng-hide="gameOver">
+            <img src="img/GameOver.jpg"/>
+        </div>
         <div class="regles" ng-hide="reglesIndications">
             <h3>Règles du jeu :</h3>
             <div class="indication-block ">
@@ -87,38 +90,38 @@
         <div class="lieux" ng-hide="indicationsRegles">
             <h3>Indications</h3>
             <div class="indication-block ind2" ng-hide="in5">
-                <h5>{{indications.Lieu5.indic}}</h5>
+                <h5>{{indication.Lieu5.indic}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="in4">
-                <h5>{{indications.Lieu4.indic}}</h5>
+                <h5>{{indication.Lieu4.indic}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="in3">
-                <h5>{{indications.Lieu3.indic}}</h5>
+                <h5>{{indication.Lieu3.indic}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="in2">
-                <h5>{{indications.Lieu2.indic}}</h5>
+                <h5>{{indication.Lieu2.indic}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="in1">
-                <h5>{{indications.Lieu1.indic}}</h5>
+                <h5>{{indication.Lieu1.indic}}</h5>
             </div>
         </div>
         <div class="destFinal " ng-hide="indicationsRegles">
             <hr/>
             <h3>Indices recoltes</h3>
             <div class="indication-block ind2" ng-hide="destFinal1">
-                <h5>{{indices.indice1}}</h5>
+                <h5>{{indicesData.indice1}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="destFinal2">
-                <h5>{{indices.indice2}}</h5>
+                <h5>{{indicesData.indice2}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="destFinal3">
-                <h5>{{indices.indice3}}</h5>
+                <h5>{{indicesData.indice3}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="destFinal4">
-                <h5>{{indices.indice4}}</h5>
+                <h5>{{indicesData.indice4}}</h5>
             </div>
             <div class="indication-block ind2" ng-hide="destFinal5">
-                <h5>{{indices.indice5}}</h5>
+                <h5>{{indicesData.indice5}}</h5>
             </div>
         </div>
 
