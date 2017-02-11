@@ -29,35 +29,161 @@ html, body {
     width: 100%;
     height: auto;
     text-align: center;
-}
-
-.ind{
     border-radius: 15px;
-    background-color: #45b3ff;
+    background-color: #23527c;
     color: #FFFFFF;
     border: 1px double;
 }
 
+.complete{
+    width: 45%;
+    margin: 5px;
+}
+
+.ind{
+    height: 100px;
+}
+
 .indication-block h5 {
     font-family: Arial;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
+}
+
+p{
+    text-align: justify;
+    padding: 10px;
 }
 
 .lieux{
     height:120px;
+}
+.regles{
+    height:300px;
+}
+
+.regles button{
+   width: 100%;
 }
 
 .destFinal{
     height: 300px;
 }
 
-.ng-hide-add         {
+
+.regles.ng-hide-add{
+    transition: 0s;
+    opacity:1;
+
+}
+
+.regles.ng-hide-add-active{
+    opacity: 0;
+}
+
+.regles.ng-hide-remove      {
+    -webkit-animation:0.5s flipInX ease;
+    animation:0.5s flipInX ease;
+}
+
+/* flip in */
+@-webkit-keyframes flipInX {
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+
+@keyframes flipInX {
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        -ms-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        -ms-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        -ms-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+        -ms-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px);
+        -ms-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+
+.ind.ng-hide-add{
+    transition: 0s;
+    opacity:1;
+
+}
+
+.ind.ng-hide-add-active{
+    opacity: 0;
+}
+
+.ind.ng-hide-remove{
+    transition: 1s;
+    opacity:0;
+
+}
+
+.ind.ng-hide-remove-active{
+    opacity: 1;
+}
+
+.ind2.ng-hide-add         {
     -webkit-animation:1s lightSpeedOut ease;
     animation:1s lightSpeedOut ease;
 }
 
-.ng-hide-remove      {
+.ind2.ng-hide-remove      {
     -webkit-animation:0.5s flipInX ease;
     animation:0.5s flipInX ease;
 }

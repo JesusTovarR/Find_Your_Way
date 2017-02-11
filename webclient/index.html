@@ -18,62 +18,116 @@
 </head>
 <body ng-app="app">
 
-<div  ng-controller="LieuController">
-<div id="info">
-    <nav class="navbar navbar-default" >
-        <div class="masthead text-center">
-            <h3 class="text-muted">Find Your Way</h3>
+<div ng-controller="LieuController">
+    <div id="info">
+        <nav class="navbar navbar-default">
+            <div class="masthead text-center">
+                <h3 class="text-muted">Find Your Way</h3>
+                <h4>Secondes:</h4><h4 ng-bind="counter"></h4>
+            </div>
+            <div class="text-center">
+                <button class=" btn btn-primary complete" ng-hide="regle" ng-click="regles()">Regles du jeu</button>
+                <button class=" btn btn-primary complete" ng-hide="regle" ng-click="newGame()">Demarrer</button>
+                <button ng-controller="MapController" class=" btn btn-primary complete" ng-click="initMap()">Redemarrer</button>
+                <div class=" btn btn-primary complete">Score : {{score}}</div>
+            </div>
+        </nav>
+        <div class="regles" ng-hide="reglesIndications">
+            <h3>Règles du jeu :</h3>
+            <div class="indication-block ">
+                <h5>But du jeu : trouver la destination finale !</h5>
+            </div>
+            <button class=" btn btn-primary" ng-click="next()" ng-disabled="disNext">--></button>
+            <div class="indication-block ind" ng-hide="regle1">
+                <p>
+                    1.-Au démarrage d’une partie, une indication sera affichée à l’écran.
+                    Grâce à cette indication, le joueur devra trouver le lieu correspondant
+                    sur la map et devra cliquer à cet endroit.
+                </p>
+            </div>
+            <div class="indication-block ind" ng-hide="regle2">
+                <p>
+                    2.-Si la réponse est juste, le joueur récoltera un indice qui s’affichera
+                    dans la liste des indices en bas de l’écran.
+                    L’indication pour le lieu à trouver suivant s’affichera alors à l’écran
+                    et ainsi de suite.
+                </p>
+            </div>
+            <div class="indication-block ind" ng-hide="regle3">
+                <p>
+                    3.-S’il ne trouve pas le lieu du premier coup, il aura droit à une deuxième
+                    chance.
+                </p>
+            </div>
+            <div class="indication-block ind" ng-hide="regle4">
+                <p>
+                    4.-Si au bout de la deuxième chance il ne trouve toujours pas la bonne réponse,
+                    il perdra alors sa chance de récolter un indice de plus, mais pour avancer
+                    dans le jeu, il devra absolument trouver ce lieu, sinon, il devra déclarer
+                    forfait et perdra donc la partie.
+                </p>
+            </div>
+            <div class="indication-block ind" ng-hide="regle5">
+                <p>
+                    5.-Enfin, le lieu numéro 6 correspond à la destination finale !
+                    Le joueur pourra trouver la destination finale grâce aux indices qu’il aura
+                    récoltés pendant la partie (il peut en récolter 5 au maximum).
+                    Il dispose de 5 chances pour trouver celle-ci.
+                </p>
+            </div>
+            <div class="indication-block ind" ng-hide="regle6">
+                <p>
+                    6.-S’il trouve la destination finale, il gagne la partie !
+                </p>
+            </div>
+            <button class=" btn btn-primary" ng-click="back()" ng-disabled="disBack"><--</button>
+
+
         </div>
-        <div class="text-center">
-            <button class=" btn btn-primary" ng-click="cambio()">Regles du jeu</button>
-            <button class=" btn btn-primary" ng-click="newGame()">Demarrer</button>
-            <button ng-controller="MapController" class=" btn btn-primary" ng-click="initMap()">Redemarrer</button>
-            <div class=" btn btn-primary">Score : {{score}}</div>
+        <div class="lieux" ng-hide="indicationsRegles">
+            <h3>Indications</h3>
+            <div class="indication-block ind2" ng-hide="in5">
+                <h5>{{indications.Lieu5.indic}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="in4">
+                <h5>{{indications.Lieu4.indic}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="in3">
+                <h5>{{indications.Lieu3.indic}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="in2">
+                <h5>{{indications.Lieu2.indic}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="in1">
+                <h5>{{indications.Lieu1.indic}}</h5>
+            </div>
         </div>
-    </nav>
-    <div class="lieux">
-        <h3>Indications</h3>
-        <div class="indication-block ind" ng-hide="in5">
-            <h5>{{indications.Lieu5.indic}}</h5>
+        <div class="destFinal " ng-hide="indicationsRegles">
+            <hr/>
+            <h3>Indices recoltes</h3>
+            <div class="indication-block ind2" ng-hide="destFinal1">
+                <h5>{{indices.indice1}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="destFinal2">
+                <h5>{{indices.indice2}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="destFinal3">
+                <h5>{{indices.indice3}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="destFinal4">
+                <h5>{{indices.indice4}}</h5>
+            </div>
+            <div class="indication-block ind2" ng-hide="destFinal5">
+                <h5>{{indices.indice5}}</h5>
+            </div>
         </div>
-        <div class="indication-block ind" ng-hide="in4" >
-            <h5>{{indications.Lieu4.indic}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="in3">
-            <h5>{{indications.Lieu3.indic}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="in2">
-            <h5>{{indications.Lieu2.indic}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="in1">
-            <h5>{{indications.Lieu1.indic}}</h5>
-        </div>
-    </div>
-    <hr/>
-    <div class="destFinal">
-        <h3>Indices recoltes</h3>
-        <div class="indication-block ind" ng-hide="destFinal1">
-            <h5>{{indices.indice1}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="destFinal2">
-            <h5>{{indices.indice2}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="destFinal3">
-            <h5>{{indices.indice3}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="destFinal4">
-            <h5>{{indices.indice4}}</h5>
-        </div>
-        <div class="indication-block ind" ng-hide="destFinal5">
-            <h5>{{indices.indice5}}</h5>
-        </div>
+
     </div>
 
 </div>
+<div ng-controller="MapController" id="map"></div>
 
-</div>
-    <div ng-controller="MapController"  id="map"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFeIoKhcRxrDwZj_or9ry618Xta7dD1OM&libraries=geometry" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFeIoKhcRxrDwZj_or9ry618Xta7dD1OM&libraries=geometry"
+        async defer></script>
 </body>
 </html>
